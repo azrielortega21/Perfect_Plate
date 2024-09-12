@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:paddingLeft="15dp"
+    android:paddingTop="10dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="10dp">
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="Placed: "
+        android:textColor="@color/mobile_gray"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_order_place_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="01-13-2001 "
+        android:textColor="@color/mobile_gray"
+        app:layout_constraintLeft_toRightOf="@id/textView4"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="Status: "
+        android:textColor="@color/mobile_gray"
+        app:layout_constraintRight_toLeftOf="@id/tv_order_status"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_order_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="To Pay"
+        android:textColor="@color/mobile_gray"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_order_pic"
+        android:layout_width="35dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_place_date"
+        app:srcCompat="@drawable/book_cover" />
+
+    <TextView
+        android:id="@+id/tv_order_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/montserrat"
+        android:maxLines="1"
+        android:text="Book title"
+        android:textColor="@color/mobile_gray"
+        app:layout_constraintLeft_toRightOf="@id/iv_order_pic"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_place_date" />
+
+    <TextView
+        android:id="@+id/tv_order_category"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/mobile_yellow"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Grade 1"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="#FDFDFD"
+        android:textSize="10sp"
+        app:layout_constraintLeft_toRightOf="@id/iv_order_pic"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_title" />
+
+    <View
+        android:id="@+id/v_search_divider"
+        android:layout_width="wrap_content"
+        android:layout_height="1sp"
+        android:layout_marginTop="5dp"
+        android:background="#868484"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iv_order_pic"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_order_total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/montserrat"
+        android:text="6"
+        android:textColor="@color/mobile_gray"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_search_divider" />
+
+    <TextView
+        android:id="@+id/tv_items"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/montserrat"
+        android:text=" items"
+        android:textColor="@color/mobile_gray"
+        app:layout_constraintLeft_toRightOf="@id/tv_order_total"
+        app:layout_constraintTop_toBottomOf="@id/v_search_divider" />
+
+    <TextView
+        android:id="@+id/tv_order_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="1234.00"
+        android:textColor="@color/mobile_green"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_search_divider" />
+
+    <TextView
+        android:id="@+id/textView35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Order Total: ₱ "
+        android:textColor="@color/mobile_green"
+        app:layout_constraintRight_toLeftOf="@id/tv_order_amount"
+        app:layout_constraintTop_toBottomOf="@id/v_search_divider" />
+
+    <TextView
+        android:id="@+id/textView37"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/montserrat"
+        android:text="See more >"
+        android:textSize="10sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_order_total" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -47,17 +47,6 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.80" />
 
-    <ImageView
-        android:id="@+id/login_iv_plate"
-        android:layout_width="0dp"
-        android:layout_height="321dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline6"
-        app:layout_constraintStart_toStartOf="@+id/guideline7"
-        app:layout_constraintTop_toTopOf="@+id/guideline8"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/perfect_plate___plate_big" />
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline6"
         android:layout_width="wrap_content"
@@ -84,9 +73,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/montserrat_bold"
         android:text="Welcome back!"
-        android:textColor="#FF9400"
+        android:textColor="@color/mobile_green"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
@@ -102,7 +91,7 @@
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
         app:layout_constraintTop_toBottomOf="@+id/login_tv_welcome"
-        app:srcCompat="@drawable/person" />
+        app:srcCompat="@drawable/ic_user_alt" />
 
     <EditText
         android:id="@+id/login_et_email"
@@ -110,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="24dp"
-        android:backgroundTint="#FF9400"
+        android:backgroundTint="@color/mobile_green"
         android:ems="10"
         android:fontFamily="@font/montserrat"
         android:hint="Email"
@@ -128,11 +117,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
-        android:backgroundTint="#FF9400"
+        android:backgroundTint="@color/mobile_green"
         android:ems="10"
         android:fontFamily="@font/montserrat"
         android:hint="Password"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textColor="#000000"
         android:textColorHint="#9E9E9E"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
@@ -161,44 +150,46 @@
         android:layout_marginTop="28dp"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
         app:layout_constraintTop_toBottomOf="@+id/login_iv_userIcon"
-        app:srcCompat="@drawable/lock" />
+        app:srcCompat="@drawable/ic_vector__7_" />
 
     <Button
         android:id="@+id/login_btn_login"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="55dp"
         android:layout_marginTop="32dp"
-        android:background="@drawable/roundercornersbutton"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/montserrat_bold"
         android:foregroundTint="#FFFFFF"
         android:shadowColor="#7C7979"
         android:text="Login"
         android:textColor="#FFFFFF"
         android:textSize="13sp"
-        app:backgroundTint="#FF9400"
+        app:backgroundTint="@color/mobile_green"
+        app:cornerRadius="15dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline10"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline9"
         app:layout_constraintTop_toBottomOf="@+id/login_et_password" />
 
-    <Button
-        android:id="@+id/login_btn_google"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/roundercornersbutton"
-        android:fontFamily="@font/montserrat"
-        android:foregroundTint="#FFFFFF"
-        android:shadowColor="#7C7979"
-        android:text="Continue with Google"
-        android:textColor="#FF9400"
-        android:textSize="13sp"
-        app:backgroundTint="#FFFFFF"
-        app:layout_constraintEnd_toStartOf="@+id/guideline10"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline9"
-        app:layout_constraintTop_toBottomOf="@+id/login_btn_login"
-        android:drawableLeft="@drawable/googleicon"/>
+<!--    <Button-->
+<!--        android:id="@+id/login_btn_google"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="55dp"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:drawableLeft="@drawable/googleicon"-->
+<!--        android:fontFamily="@font/montserrat_bold"-->
+<!--        android:foregroundTint="#FFFFFF"-->
+<!--        android:shadowColor="#7C7979"-->
+<!--        android:text="Continue with Google"-->
+<!--        android:textColor="@color/mobile_green"-->
+<!--        android:textSize="13sp"-->
+<!--        app:backgroundTint="#FFFFFF"-->
+<!--        app:cornerRadius="15dp"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/guideline10"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/guideline9"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/login_btn_login"-->
+<!--        app:strokeColor="@color/mobile_green"-->
+<!--        app:strokeWidth="2dp" />-->
 
     <ProgressBar
         android:id="@+id/login_pb"
