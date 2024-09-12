@@ -6,28 +6,22 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-import java.text.DecimalFormat;
+public class BookDetailsActivity extends AppCompatActivity {
+    private Book book;
 
-public class RecipeDetailsActivity extends AppCompatActivity {
-    private Recipe recipe;
-
-    private TextView tvRecipeName;
-    private ImageView ivRecipePic;
-    private TextView tvRecipeNameTop;
+    private TextView tvBookName;
+    private ImageView ivBookPic;
+    private TextView tvBookNameTop;
     private TextView tvStarsSummary;
     private TextView tvFavCount;
     private ImageView ivContributorPic;
@@ -61,25 +55,25 @@ public class RecipeDetailsActivity extends AppCompatActivity {
     private Boolean liked = false;
     public static Boolean reviewed = false;
 
-    public static final String KEY_RECIPE_ID = "KEY_RECIPE_ID";
+    public static final String KEY_BOOK_ID = "KEY_BOOK_ID";
 
     private TextView tvEmpty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recipe_details);
+        setContentView(R.layout.activity_book_details);
         this.fabHeart = findViewById(R.id.fab_heart);
-        this.tvRecipeName = findViewById(R.id.tv_recipe_details_name);
-        this.ivRecipePic = findViewById(R.id.iv_recipe_details_pic);
-        this.tvRecipeNameTop = findViewById(R.id.tv_recipe_details_name_top);
+        this.tvBookName = findViewById(R.id.tv_book_details_name);
+        this.ivBookPic = findViewById(R.id.iv_book_details_pic);
+        this.tvBookNameTop = findViewById(R.id.tv_book_details_name_top);
         this.tvStarsSummary = findViewById(R.id.tv_details_stars_summary);
         this.tvFavCount = findViewById(R.id.tv_details_fav_count);
-        this.ivContributorPic = findViewById(R.id.iv_recipe_details_contributor_pic);
-        this.tvContributorName = findViewById(R.id.tv_recipe_details_contributor_name);
-        this.tvDescription = findViewById(R.id.tv_recipe_details_description);
+        this.ivContributorPic = findViewById(R.id.iv_book_details_contributor_pic);
+        this.tvContributorName = findViewById(R.id.tv_book_details_contributor_name);
+        this.tvDescription = findViewById(R.id.tv_book_details_description);
         this.tvReviewCount = findViewById(R.id.tv_details_review_count);
-        this.tvCategory = findViewById(R.id.tv_recipe_details_category);
+        this.tvCategory = findViewById(R.id.tv_book_details_category);
 
         this.ivReviewUserPic = findViewById(R.id.iv_review_user_pic);
         this.tvReviewComment = findViewById(R.id.tv_review_comment);
@@ -99,87 +93,87 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         this.llCommentCont = findViewById(R.id.ll_comment_container);
         this.tvEmpty = findViewById(R.id.tv_review_empty);
 
-        this.ibBack = findViewById(R.id.ib_recipe_details_back);
+        this.ibBack = findViewById(R.id.ib_book_details_back);
 
         //this.ivDeleteComment = findViewById(R.id.iv_delete_comment);
 
         //this.clReviews = findViewById(R.id.cl_details_reviews);
 
         Intent i = getIntent();
-        String id = i.getStringExtra(PopularAdapter.KEY_RECIPE_ID);
+        String id = i.getStringExtra(PopularAdapter.KEY_BOOK_ID);
 
-        this.recipe = DataHelper.recipeDatabase.findRecipe(id);
+        this.book = DataHelper.bookDatabase.findBook(id);
 
-        this.tvRecipeName.setText(recipe.getRecipeName());
+        this.tvBookName.setText(book.getBookName());
 //        this.ivRecipePic.setImageResource(recipe.getRecipePic());
-        this.tvDescription.setText(recipe.getDescription());
-        this.tvRecipeNameTop.setText(recipe.getRecipeName());
+        this.tvDescription.setText(book.getDescription());
+        this.tvBookNameTop.setText(book.getBookName());
         //this.tvStarsSummary.setText(String.valueOf(recipe.getRating()));
-        this.tvFavCount.setText(String.valueOf(recipe.getFaveCount()));
-        this.tvReviewCount.setText(String.valueOf(recipe.getReviewCount()).concat(" reviews"));
+        this.tvFavCount.setText(String.valueOf(book.getFaveCount()));
+        this.tvReviewCount.setText(String.valueOf(book.getReviewCount()).concat(" reviews"));
 
-        String temp = "Category: ".concat(recipe.getCategory());
+        String temp = "Category: ".concat(book.getCategory());
         this.tvCategory.setText(temp);
 
 
-        // set user
-        this.tvContributorName.setText(recipe.getContributorName());
-
-        // set contrib pic
-        if(recipe.getContributorPic() != null){
-            Picasso.with(this)
-                    .load(recipe.getContributorPic().getmImageUrl())
-                    .placeholder(R.drawable.vectorperson)
-                    .fit()
-                    .centerCrop()
-                    .into(ivContributorPic);
-        }
-        else{
-            ivContributorPic.setImageResource(R.drawable.vectorperson);
-        }
+//        // set user
+//        this.tvContributorName.setText(book.getContributorName());
+//
+//        // set contrib pic
+//        if(book.getContributorPic() != null){
+//            Picasso.with(this)
+//                    .load(book.getContributorPic().getmImageUrl())
+//                    .placeholder(R.drawable.vectorperson)
+//                    .fit()
+//                    .centerCrop()
+//                    .into(ivContributorPic);
+//        }
+//        else{
+//            ivContributorPic.setImageResource(R.drawable.vectorperson);
+//        }
 
         //set pic
         Picasso.with(this)
-                .load(recipe.getUploadImage().getmImageUrl())
+                .load(book.getUploadImage().getmImageUrl())
                 .placeholder(R.drawable.perfect_plate_transparent_bg)
                 .fit()
                 .centerCrop()
-                .into(this.ivRecipePic);
+                .into(this.ivBookPic);
 
         //set liked
-        for (Recipe tempRecipe : DataHelper.user.getFaveRecipes()){
-            if (recipe.getId().equals(tempRecipe.getId())){
+        for (Book tempBook : DataHelper.user.getFaveBooks()){
+            if (book.getId().equals(tempBook.getId())){
                 setLiked();
                 break;
             }
         }
+//
+//        // set ingredients
+//        for (Ingredient ingredient : book.getIngredientDetailsList()){
+//            View ingredientLayout = getLayoutInflater().inflate(R.layout.ingredients_list_template, llIngredientsCont, false);
+//            llIngredientsCont.addView(ingredientLayout);
+//
+//            TextView measurement = ingredientLayout.findViewById(R.id.tv_ingredients_amt);
+//            TextView ingrName = ingredientLayout.findViewById(R.id.tv_ingredient_name);
+//
+//            String tempM = String.valueOf(ingredient.getQuantity()).concat(" " + ingredient.getUnits());
+//            measurement.setText(tempM);
+//
+//            ingrName.setText(ingredient.getIngredientName());
+//        }
 
-        // set ingredients
-        for (Ingredient ingredient : recipe.getIngredientDetailsList()){
-            View ingredientLayout = getLayoutInflater().inflate(R.layout.ingredients_list_template, llIngredientsCont, false);
-            llIngredientsCont.addView(ingredientLayout);
-
-            TextView measurement = ingredientLayout.findViewById(R.id.tv_ingredients_amt);
-            TextView ingrName = ingredientLayout.findViewById(R.id.tv_ingredient_name);
-
-            String tempM = String.valueOf(ingredient.getQuantity()).concat(" " + ingredient.getUnits());
-            measurement.setText(tempM);
-
-            ingrName.setText(ingredient.getIngredientName());
-        }
-
-        //set steps
-        for (int ctr = 0; ctr < recipe.getStepsList().size(); ctr++){
-            View stepsLayout = getLayoutInflater().inflate(R.layout.steps_list_template, llStepsCont, false);
-            llStepsCont.addView(stepsLayout);
-
-            TextView number = stepsLayout.findViewById(R.id.tv_step_number);
-            TextView str = stepsLayout.findViewById(R.id.tv_step_text);
-
-            number.setText(String.valueOf(ctr+1));
-            str.setText(recipe.getStepsList().get(ctr));
-
-        }
+//        //set steps
+//        for (int ctr = 0; ctr < book.getStepsList().size(); ctr++){
+//            View stepsLayout = getLayoutInflater().inflate(R.layout.steps_list_template, llStepsCont, false);
+//            llStepsCont.addView(stepsLayout);
+//
+//            TextView number = stepsLayout.findViewById(R.id.tv_step_number);
+//            TextView str = stepsLayout.findViewById(R.id.tv_step_text);
+//
+//            number.setText(String.valueOf(ctr+1));
+//            str.setText(book.getStepsList().get(ctr));
+//
+//        }
         llCommentCont.removeAllViews();
         // load the reviews for this recipe
         loadReviews();
@@ -191,7 +185,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 reviewed = true;
                 Intent i = new Intent(v.getContext(), WriteReviewActivity.class);
-                i.putExtra(KEY_RECIPE_ID, id); //TODO: ???
+                i.putExtra(KEY_BOOK_ID, id); //TODO: ???
                 startActivity(i);
             }
         });
@@ -257,14 +251,14 @@ public class RecipeDetailsActivity extends AppCompatActivity {
                     fabHeart.setImageResource(R.drawable.heart_on);
                     liked = true;
                     fabHeart.setColorFilter(getResources().getColor(R.color.proj_red_pink));
-                    DataHelper.userDatabase.addFaveRecipe(recipe);
-                    tvFavCount.setText(String.valueOf(recipe.getFaveCount()));
+                    DataHelper.userDatabase.addFaveBook(book);
+                    tvFavCount.setText(String.valueOf(book.getFaveCount()));
                 } else {
                     fabHeart.setImageResource(R.drawable.heart_off);
                     liked = false;
                     fabHeart.setColorFilter(getResources().getColor(R.color.proj_red_pink));
-                    DataHelper.userDatabase.removeFaveRecipe(recipe);
-                    tvFavCount.setText(String.valueOf(recipe.getFaveCount()));
+                    DataHelper.userDatabase.removeFaveBook(book);
+                    tvFavCount.setText(String.valueOf(book.getFaveCount()));
                 }
             }
         });
@@ -289,7 +283,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
         llCommentCont.removeAllViews();
 
         for (Review review : DataHelper.allReviews){
-            if (review.getRecipeId().equals(recipe.getId())) {
+            if (review.getBookId().equals(book.getId())) {
                 View commentLayout = getLayoutInflater().inflate(R.layout.comment_template, llCommentCont, false);
                 llCommentCont.addView(commentLayout);
 
@@ -355,7 +349,7 @@ public class RecipeDetailsActivity extends AppCompatActivity {
             }
         }
 
-        if(recipe.getReviewCount() < 1){
+        if(book.getReviewCount() < 1){
             this.tvEmpty.setVisibility(View.VISIBLE);
         } else{
             this.tvEmpty.setVisibility(View.GONE);
@@ -370,12 +364,12 @@ public class RecipeDetailsActivity extends AppCompatActivity {
 
 
     public void loadCounters(){
-        this.tvStarsSummary.setText(recipe.getRatingString());
+        this.tvStarsSummary.setText(book.getRatingString());
 
-        String revCtr = recipe.getReviewCount() + " reviews";
+        String revCtr = book.getReviewCount() + " reviews";
         this.tvReviewCount.setText(revCtr);
 
-        this.tvFavCount.setText(String.valueOf(recipe.getFaveCount()));
+        this.tvFavCount.setText(String.valueOf(book.getFaveCount()));
     }
 
     @Override

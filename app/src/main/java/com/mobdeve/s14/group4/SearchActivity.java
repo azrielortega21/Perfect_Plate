@@ -2,20 +2,16 @@ package com.mobdeve.s14.group4;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -36,7 +32,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private EditText etSearch;
 
-    private ArrayList<Recipe> recipeFilter;
+    private ArrayList<Book> bookFilter;
 
 
 
@@ -71,9 +67,9 @@ public class SearchActivity extends AppCompatActivity {
         this.tvViewAll = findViewById(R.id.tv_search_view_all);
 
         this.svSearch = findViewById(R.id.sv_search);
-        this.etSearch = findViewById(R.id.et_search_recipe_search);
+        this.etSearch = findViewById(R.id.et_search_book_search);
 
-        this.recipeFilter = new ArrayList<Recipe>();
+        this.bookFilter = new ArrayList<Book>();
 
 
         llFavorites.setOnClickListener(new View.OnClickListener() {
@@ -102,8 +98,8 @@ public class SearchActivity extends AppCompatActivity {
         this.llCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SearchActivity.this, CreateRecipeActivity1.class);
-                startActivity(i);
+//                Intent i = new Intent(SearchActivity.this, CreateRecipeActivity1.class);
+//                startActivity(i);
             }
         });
 

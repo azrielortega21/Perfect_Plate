@@ -17,7 +17,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/pt_recipe_iv_cover"
+                android:id="@+id/pt_book_iv_cover"
                 android:layout_width="207dp"
                 android:layout_height="265dp"
                 android:layout_marginLeft="10dp"
@@ -29,7 +29,7 @@
         </FrameLayout>
 
         <ImageView
-            android:id="@+id/iv_delete_user_recipe"
+            android:id="@+id/iv_delete_user_book"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"

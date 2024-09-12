@@ -2,74 +2,180 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="362dp"
+    android:layout_height="210dp"
     android:paddingLeft="5dp"
     android:paddingRight="5dp"
     android:paddingBottom="10dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_popular_card"
-        android:layout_width="115dp"
-        android:layout_height="140dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@drawable/shadow"
         android:clipToPadding="false"
         android:elevation="8dp"
+        android:padding="2dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="8dp"
         app:cardPreventCornerOverlap="false">
 
         <ImageView
-            android:id="@+id/iv_popular_pic"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
+            android:id="@+id/imageView"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="@drawable/shadow"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/popular1" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="bottom"
-            android:background="#FF9400" />
+            app:srcCompat="@drawable/book_cover" />
 
         <TextView
             android:id="@+id/tv_popular_name"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="18dp"
-            android:ellipsize="marquee"
-            android:fontFamily="@font/montserrat_bold"
-            android:gravity="bottom"
-            android:singleLine="true"
-            android:text="Poopers poopie"
-            android:textColor="#F4F0EF"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="5dp"
-            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="bottom"
+            android:lines="2"
+            android:maxLines="2"
+            android:text="The New Science Links Teacher’s Resource Materials"
+            android:textColor="@color/mobile_green"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_popular_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="5dp"
+            android:ellipsize="end"
             android:fontFamily="@font/montserrat"
-            android:text="View Recipe"
-            android:textColor="#F4F0EF"
-            android:textSize="12sp" />
+            android:lines="2"
+            android:maxLines="2"
+            android:text="Evelyn T. Larisma, Jan Jason Madriaga-Mariano"
+            android:textColor="#000000"
+            android:textSize="9sp"
+            android:textStyle="italic"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_popular_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginRight="5dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/montserrat"
+            android:lines="5"
+            android:maxLines="5"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fringilla erat nec nibh ornare, ut ultrices ligula tincidunt. In eget augue dolor. Donec lacus risus Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
+            android:textColor="@color/mobile_gray"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tv_popular_category"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="170dp"
+            android:background="@color/mobile_yellow"
+            android:fontFamily="@font/montserrat_bold"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:text="science"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tv_popular_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="252dp"
+            android:layout_marginTop="170dp"
+            android:fontFamily="@font/montserrat"
+            android:paddingTop="2dp"
+            android:text="MORE DETAILS"
+            android:textColor="@color/mobile_green"
+            android:textSize="10sp" />
 
         <ImageView
-            android:id="@+id/template_fr_iv_heart"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
-            android:layout_gravity="bottom"
-            android:layout_marginLeft="80dp"
-            android:layout_marginBottom="9dp"
-            app:srcCompat="@drawable/vectorarrow" />
+            android:id="@+id/iv_arrow"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:layout_marginLeft="330dp"
+            android:layout_marginTop="173dp"
+            app:srcCompat="@drawable/ic_right_arrow" />
+
+        <TextView
+            android:id="@+id/tv_popular_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="80dp"
+            android:text="4.5"
+
+            android:textSize="10sp" />
+
+        <ImageView
+            android:id="@+id/iv_popular_star"
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:layout_marginLeft="168dp"
+            android:layout_marginTop="80dp"
+            app:srcCompat="@drawable/vectorstar" />
+
+        <TextView
+            android:id="@+id/tv_popular_favorites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="145"
+            android:layout_marginLeft="190dp"
+            android:layout_marginTop="80dp"
+            android:textSize="10sp"/>
     </androidx.cardview.widget.CardView>
+
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--        android:id="@+id/cv_popular_book"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent">-->
+
+    <!--        <ImageView-->
+    <!--            android:id="@+id/iv_popular_pic"-->
+    <!--            android:layout_width="145dp"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:adjustViewBounds="true"-->
+    <!--            android:scaleType="centerCrop"-->
+    <!--            app:layout_constraintLeft_toLeftOf="parent"-->
+    <!--            app:layout_constraintRight_toLeftOf="@id/tv_popular_name"-->
+    <!--            app:layout_constraintTop_toTopOf="parent"-->
+    <!--            app:srcCompat="@drawable/book_cover"-->
+
+    <!--            />-->
+
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/tv_popular_name"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="50dp"-->
+    <!--            android:layout_marginLeft="5dp"-->
+    <!--            android:ellipsize="end"-->
+    <!--            android:fontFamily="@font/montserrat_bold"-->
+    <!--            android:lines="2"-->
+    <!--            android:maxLines="2"-->
+    <!--            android:text="The New Science Links Teacher’s Resource Materials"-->
+    <!--            android:textColor="@color/mobile_green"-->
+    <!--            android:textSize="14sp"-->
+    <!--            app:layout_constraintLeft_toRightOf="@id/iv_popular_pic"-->
+    <!--            app:layout_constraintRight_toRightOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent" />-->
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </LinearLayout>

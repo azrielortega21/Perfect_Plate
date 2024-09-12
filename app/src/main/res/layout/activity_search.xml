@@ -30,7 +30,7 @@
         app:srcCompat="@drawable/ic_vectorsearch" />
 
     <EditText
-        android:id="@+id/et_search_recipe_search"
+        android:id="@+id/et_search_book_search"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginLeft="10dp"
@@ -56,7 +56,7 @@
         android:layout_marginTop="10dp"
         android:background="#02043F"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_search_recipe_search" />
+        app:layout_constraintTop_toBottomOf="@id/et_search_book_search" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_search_left"
@@ -353,7 +353,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="View all Perfect Plate recipes"
+        android:text="View all Perfect Plate books"
         android:textColor="#d30045"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/gl_search_left"

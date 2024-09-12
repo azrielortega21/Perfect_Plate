@@ -8,15 +8,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 
-public class ProfileRecipeHolder extends RecyclerView.ViewHolder {
+public class ProfileBookHolder extends RecyclerView.ViewHolder {
 
     public ImageView ivCover;
     public ImageView ivBtnDelete;
 
-    public ProfileRecipeHolder(@NonNull @NotNull View itemView) {
+    public ProfileBookHolder(@NonNull @NotNull View itemView) {
         super(itemView);
 
-        ivCover = itemView.findViewById(R.id.pt_recipe_iv_cover);
-        ivBtnDelete = itemView.findViewById(R.id.iv_delete_user_recipe);
+        ivCover = itemView.findViewById(R.id.pt_book_iv_cover);
+        ivBtnDelete = itemView.findViewById(R.id.iv_delete_user_book);
     }
 }

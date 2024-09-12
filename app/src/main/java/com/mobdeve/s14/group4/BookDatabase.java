@@ -15,42 +15,40 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class RecipeDatabase {
+public class BookDatabase {
     private FirebaseAuth auth;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
 
-    private IngredientDatabase ingredientDatabase;
-
     private ReviewDatabase reviewDatabase;
 
-    public RecipeDatabase(){
+    public BookDatabase(){
         this.auth = FirebaseAuth.getInstance();
         this.database = FirebaseDatabase.getInstance();
         this.databaseReference = this.database.getReference("recipes");
-        this.ingredientDatabase = new IngredientDatabase();
+//        this.ingredientDatabase = new IngredientDatabase();
         this.reviewDatabase = new ReviewDatabase();
     }
 
     /**
      * For initializing DataHelper
      */
-    public void getAllRecipes(final CallbackListener callbackListener){
-        ArrayList<Recipe> recipes = new ArrayList<Recipe>();
+    public void getAllBooks(final CallbackListener callbackListener){
+        ArrayList<Book> books = new ArrayList<Book>();
 
         this.databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
                     for (DataSnapshot recipeSnapshot : snapshot.getChildren()){
-                        FirebaseRecipe firebaseRecipe = recipeSnapshot.getValue(FirebaseRecipe.class);
-                        Recipe recipe = new Recipe(firebaseRecipe);
+                        FirebaseBook firebaseBook = recipeSnapshot.getValue(FirebaseBook.class);
+                        Book book = new Book(firebaseBook);
 
-                        recipes.add(recipe);
+                        books.add(book);
                     }
                 }
 
-                callbackListener.onSuccess(recipes);
+                callbackListener.onSuccess(books);
             }
 
             @Override
@@ -63,10 +61,10 @@ public class RecipeDatabase {
     /**
      * Find a single recipe from data helper
      * */
-    public Recipe findRecipe(String id){
-        for (Recipe recipe : DataHelper.allRecipes){
-            if(id.equals(recipe.getId())){
-                return recipe;
+    public Book findBook(String id){
+        for (Book book : DataHelper.allBooks){
+            if(id.equals(book.getId())){
+                return book;
             }
         }
 
@@ -76,31 +74,31 @@ public class RecipeDatabase {
     /**
      * Find recipes from data helper
      * */
-    public ArrayList<Recipe> findRecipes(ArrayList<String> recipeIds){
-        ArrayList<String> clone = (ArrayList<String>) recipeIds.clone();
-        ArrayList<Recipe> recipes = new ArrayList<Recipe>();
+    public ArrayList<Book> findBooks(ArrayList<String> bookIds){
+        ArrayList<String> clone = (ArrayList<String>) bookIds.clone();
+        ArrayList<Book> books = new ArrayList<Book>();
 
         for (String id : clone){
-            Recipe recipe = findRecipe(id);
+            Book book = findBook(id);
 
-            if (recipe != null){
-                recipes.add(recipe);
+            if (book != null){
+                books.add(book);
             }
             else{
-                recipeIds.remove(id);
+                bookIds.remove(id);
             }
         }
 
-        return recipes;
+        return books;
     }
 
-    public String addRecipe(Recipe recipe){
+    public String addBook(Book book){
         Log.d("myTag", "Add Recipe Entered");
         String key = this.databaseReference.push().getKey();
 
-        recipe.setId(key);
+        book.setId(key);
 
-        this.databaseReference.child(key).setValue(recipe.getFirebaseRecipe());
+        this.databaseReference.child(key).setValue(book.getFirebaseBook());
 
         return key;
     }
@@ -126,7 +124,7 @@ public class RecipeDatabase {
     /**
      * Delete recipe from recipe database.
      * */
-    public void deleteRecipe(String id){
+    public void deleteBook(String id){
         this.databaseReference.child(id).setValue(null);
     }
 }

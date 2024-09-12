@@ -8,7 +8,7 @@
     android:background="#00FFFFFF">
 
     <EditText
-        android:id="@+id/createrecipe_ingredients_et_number"
+        android:id="@+id/createbook_ingredients_et_number"
         android:layout_width="50dp"
         android:layout_height="40dp"
         android:layout_marginLeft="4dp"
@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/createrecipe_ingredients_et_unit"
+        android:id="@+id/createbook_ingredients_et_unit"
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:layout_marginLeft="4dp"
@@ -42,11 +42,11 @@
         android:textColor="#000000"
         android:textColorHint="#B8B8B8"
         android:textSize="13sp"
-        app:layout_constraintStart_toEndOf="@+id/createrecipe_ingredients_et_number"
+        app:layout_constraintStart_toEndOf="@+id/createbook_ingredients_et_number"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/createrecipe_ingredients_et_name"
+        android:id="@+id/createbook_ingredients_et_name"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginLeft="4dp"
@@ -62,12 +62,12 @@
         android:textColor="#000000"
         android:textColorHint="#B8B8B8"
         android:textSize="13sp"
-        app:layout_constraintEnd_toStartOf="@+id/createrecipe_ingredients_iv_delete"
-        app:layout_constraintStart_toEndOf="@+id/createrecipe_ingredients_et_unit"
+        app:layout_constraintEnd_toStartOf="@+id/createbook_ingredients_iv_delete"
+        app:layout_constraintStart_toEndOf="@+id/createbook_ingredients_et_unit"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/createrecipe_ingredients_iv_delete"
+        android:id="@+id/createbook_ingredients_iv_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"

@@ -15,15 +15,15 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteRecipeHolder> {
+public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteBookHolder> {
 
-    public static final String KEY_RECIPE_ID = "KEY_RECIPE_ID";
+    public static final String KEY_BOOK_ID = "KEY_BOOK_ID";
 
-    private ArrayList<Recipe> data;
+    private ArrayList<Book> data;
 
-    private CardView cvRecipe;
+    private CardView cvBook;
 
-    public FavoriteAdapter(ArrayList<Recipe> tempData){
+    public FavoriteAdapter(ArrayList<Book> tempData){
         data = tempData;
     }
 
@@ -31,17 +31,17 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteRecipeHolder> 
     @NonNull
     @NotNull
     @Override
-    public FavoriteRecipeHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+    public FavoriteBookHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
 
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.template_favoriterecipe, parent, false);
-        FavoriteRecipeHolder holder = new FavoriteRecipeHolder(view);
+        View view = inflater.inflate(R.layout.template_favoritebook, parent, false);
+        FavoriteBookHolder holder = new FavoriteBookHolder(view);
 
         holder.getCard().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(v.getContext(), RecipeDetailsActivity.class);
-                i.putExtra(KEY_RECIPE_ID, data.get(holder.getBindingAdapterPosition()).getId());
+                Intent i = new Intent(v.getContext(), BookDetailsActivity.class);
+                i.putExtra(KEY_BOOK_ID, data.get(holder.getBindingAdapterPosition()).getId());
                 v.getContext().startActivity(i);
             }
         });
@@ -50,15 +50,15 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteRecipeHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull FavoriteRecipeHolder holder, int position) {
-        holder.setRecipe(data.get(position));
-        holder.setRecipeName(data.get(position).getRecipeName());
+    public void onBindViewHolder(@NonNull @NotNull FavoriteBookHolder holder, int position) {
+        holder.setBook(data.get(position));
+        holder.setBookName(data.get(position).getBookName());
         Picasso.with(holder.itemView.getContext())
                 .load(data.get(position).getUploadImage().getmImageUrl())
                 .placeholder(R.drawable.perfect_plate_transparent_bg)
                 .fit()
                 .centerCrop()
-                .into(holder.ivRecipe);
+                .into(holder.ivBook);
     }
 
     @Override

@@ -3,8 +3,7 @@ package com.mobdeve.s14.group4;
 import java.util.ArrayList;
 
 public class User extends FirebaseUser{
-    private ArrayList<Recipe> userRecipes;
-    private ArrayList<Recipe> faveRecipes;
+    private ArrayList<Book> faveBooks;
 
     public User(){}
 
@@ -18,119 +17,93 @@ public class User extends FirebaseUser{
         setFirstName(user.getFirstName());
         setLastName(user.getLastName());
 
-        setGoogleId(user.getGoogleId());
-
-        setUserRecipesList(user.getUserRecipesList());
-        setFaveRecipesList(user.getFaveRecipesList());
+        setFaveBooksList(user.getFaveBooksList());
 
         setProfile_Image(user.getProfile_Image());
 
-        initializeRecipeLists();
+        initializeBookLists();
     }
 
     public User(String email, String  password, String username, String firstName, String lastName){
         super(email, password, username, firstName, lastName);
 
-        this.userRecipes = new ArrayList<Recipe>();
-        this.faveRecipes = new ArrayList<Recipe>();
+//        this.userBooks = new ArrayList<Book>();
+        this.faveBooks = new ArrayList<Book>();
     }
 
     public User(String email, String  password, String username, String firstName, String lastName, String birthday){
         super(email, password, username, firstName, lastName, birthday);
 
-        this.userRecipes = new ArrayList<Recipe>();
-        this.faveRecipes = new ArrayList<Recipe>();
+//        this.userBooks = new ArrayList<Book>();
+        this.faveBooks = new ArrayList<Book>();
     }
 
-    public User(String googleId, String username, String firstName, String lastName){
-        super(googleId, username, firstName, lastName);
+    private void initializeBookLists(){
+        BookDatabase bookDatabase = new BookDatabase();
 
-        this.userRecipes = new ArrayList<Recipe>();
-        this.faveRecipes = new ArrayList<Recipe>();
-    }
+        this.faveBooks = bookDatabase.findBooks(getFaveBooksList());
 
-//    public User(String email, String  password, String username, String firstName, String lastName, String birthday, UploadImage upload){
-//        super(email, password, username, firstName, lastName, birthday, upload);
-//
-//        this.userRecipes = new ArrayList<Recipe>();
-//        this.faveRecipes = new ArrayList<Recipe>();
-//    }
-//
-//    public User(String googleId, String username, String firstName, String lastName, UploadImage upload){
-//        super(googleId, username, firstName, lastName, upload);
-//
-//        this.userRecipes = new ArrayList<Recipe>();
-//        this.faveRecipes = new ArrayList<Recipe>();
-//    }
-
-
-    private void initializeRecipeLists(){
-        RecipeDatabase recipeDatabase = new RecipeDatabase();
-
-        this.userRecipes = recipeDatabase.findRecipes(getUserRecipesList());
-        this.faveRecipes = recipeDatabase.findRecipes(getFaveRecipesList());
-
-        DataHelper.userDatabase.updateFaveRecipes(getUserId(), getFaveRecipesList(), getFaveRecipesCount());
+        DataHelper.userDatabase.updateFaveBooks(getUserId(), getFaveBooksList(), getFaveBooksCount());
     }
 
     public String getFullName(){
         return getFirstName() + " " + getLastName();
     }
 
-    //add user recipe to current list of recipes
-    public void addUserRecipe(Recipe recipe){
-        //add to local lists
-        this.userRecipes.add(recipe);
-        addUserRecipeId(recipe.getId());
+//    //add user recipe to current list of recipes
+//    public void addUserRecipe(Book book){
+//        //add to local lists
+//        this.userBooks.add(book);
+//        addUserOrderId(book.getId());
+//    }
+
+    public void addFaveBook(Book book){
+        this.faveBooks.add(book);
+        addFaveBookId(book.getId());
+
+        book.setFaveCount(book.getFaveCount() + 1);
     }
 
-    public void addFaveRecipe(Recipe recipe){
-        this.faveRecipes.add(recipe);
-        addFaveRecipeId(recipe.getId());
-
-        recipe.setFaveCount(recipe.getFaveCount() + 1);
-    }
-
-    /**
-     * Removes user recipe from User and FirebaseUser
-     */
-    public void removeUserRecipe(String id){
-        int removeIndex = 0;
-
-        for (int i = 0; i < getUserRecipesCount(); i++){
-            if (this.userRecipes.get(i).getId().equals(id)){
-                removeIndex = i;
-            }
-        }
-
-        removeUserRecipeId(id);
-        this.userRecipes.remove(removeIndex);
-    }
+//    /**
+//     * Removes user recipe from User and FirebaseUser
+//     */
+//    public void removeUserRecipe(String id){
+//        int removeIndex = 0;
+//
+//        for (int i = 0; i < getUserRecipesCount(); i++){
+//            if (this.userBooks.get(i).getId().equals(id)){
+//                removeIndex = i;
+//            }
+//        }
+//
+//        removeUserRecipeId(id);
+//        this.userBooks.remove(removeIndex);
+//    }
 
     /**
      * Removes favorite recipe from User and FirebaseUser
      */
-    public void removeFaveRecipe(Recipe recipe){
+    public void removeFaveBook(Book book){
         int removeIndex = 0;
 
-        for (int i = 0; i < getFaveRecipesCount(); i++){
-            if (this.faveRecipes.get(i).getId().equals(recipe.getId())){
+        for (int i = 0; i < getFaveBooksCount(); i++){
+            if (this.faveBooks.get(i).getId().equals(book.getId())){
                 removeIndex = i;
             }
         }
 
-        removeFaveRecipeId(recipe.getId());
-        this.faveRecipes.remove(removeIndex);
+        removeFaveBookId(book.getId());
+        this.faveBooks.remove(removeIndex);
 
-        recipe.setFaveCount(recipe.getFaveCount() - 1);
+        book.setFaveCount(book.getFaveCount() - 1);
     }
 
-    public ArrayList<Recipe> getUserRecipes(){
-        return this.userRecipes;
-    }
+//    public ArrayList<Book> getUserRecipes(){
+//        return this.userBooks;
+//    }
 
-    public ArrayList<Recipe> getFaveRecipes(){
-        return this.faveRecipes;
+    public ArrayList<Book> getFaveBooks(){
+        return this.faveBooks;
     }
 
     public FirebaseUser getFirebaseUser(){

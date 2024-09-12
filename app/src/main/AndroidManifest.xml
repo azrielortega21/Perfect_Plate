@@ -16,14 +16,11 @@
         android:theme="@style/Theme.PerfectPlate">
         <activity android:name=".SearchFilterActivity"></activity>
         <activity android:name=".ViewFavoritesActivity" />
-        <activity android:name=".CreateRecipeActivity3" />
-        <activity android:name=".CreateRecipeActivity1" />
-        <activity android:name=".CreateRecipeActivity2" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".WriteReviewActivity" />
         <activity android:name=".EditProfileActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".RecipeDetailsActivity" />
+        <activity android:name=".BookDetailsActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".SignUpActivity2" />
         <activity android:name=".SignUpActivity1" />
