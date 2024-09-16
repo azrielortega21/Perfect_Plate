@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+    android:background="@color/mobile_bg_white"
+    android:paddingBottom="10dp"
+    tools:context=".InsideEditBookActivity">
+
+    <ScrollView
+        android:id="@+id/sv_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="top"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/c_details_nav">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_details_cont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="BOOK TITLE"
+                android:textColor="@color/mobile_gray"
+                app:layout_constraintLeft_toLeftOf="@id/gl_details_left"
+                app:layout_constraintTop_toBottomOf="@id/iv_edit_book" />
+
+            <EditText
+                android:id="@+id/et_book_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="@font/montserrat"
+                android:hint="ex. Harry Potter and the Philosopher's Stone"
+                android:inputType="textPersonName"
+                android:maxLines="2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="@id/gl_details_left"
+                app:layout_constraintRight_toRightOf="@id/gl_details_right"
+                app:layout_constraintTop_toBottomOf="@id/textView40" />
+
+            <TextView
+                android:id="@+id/textView45"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="AUTHORS"
+                android:textColor="@color/mobile_gray"
+                app:layout_constraintLeft_toLeftOf="@id/gl_details_left"
+                app:layout_constraintTop_toBottomOf="@id/et_book_name" />
+
+            <EditText
+                android:id="@+id/et_book_authors"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="@font/montserrat"
+                android:hint="ex. J. K. Rowling"
+                android:inputType="textPersonName"
+                android:maxLines="2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="@id/gl_details_left"
+                app:layout_constraintRight_toRightOf="@id/gl_details_right"
+                app:layout_constraintTop_toBottomOf="@id/textView45" />
+
+            <TextView
+                android:id="@+id/textView47"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="PRICE"
+                android:textColor="@color/mobile_gray"
+                app:layout_constraintLeft_toLeftOf="@id/gl_details_left"
+                app:layout_constraintTop_toBottomOf="@id/sp_edit_category" />
+
+
+            <TextView
+                android:id="@+id/textView44"
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="₱ "
+                android:textColor="@color/mobile_gray"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/et_edit_price"
+                app:layout_constraintLeft_toLeftOf="@id/gl_details_left"
+
+                app:layout_constraintTop_toTopOf="@id/et_edit_price" />
+
+            <EditText
+                android:id="@+id/et_edit_price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="@font/montserrat"
+                android:hint="1234.00"
+                android:inputType="numberDecimal"
+                android:textAlignment="viewEnd"
+                app:layout_constraintLeft_toRightOf="@id/textView44"
+                app:layout_constraintRight_toRightOf="@id/gl_details_right"
+                app:layout_constraintTop_toBottomOf="@id/textView47" />
+
+            <TextView
+                android:id="@+id/textView46"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="CATEGORY"
+                android:textColor="@color/mobile_gray"
+                app:layout_constraintLeft_toLeftOf="@id/gl_details_left"
+                app:layout_constraintTop_toBottomOf="@id/et_book_authors" />
+
+
+            <Spinner
+                android:id="@+id/sp_edit_category"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
+                app:layout_constraintLeft_toLeftOf="@id/gl_details_left"
+                app:layout_constraintRight_toRightOf="@id/gl_details_right"
+                app:layout_constraintTop_toBottomOf="@id/textView46" />
+
+            <TextView
+                android:id="@+id/textView48"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="STOCKS "
+                android:textColor="@color/mobile_gray"
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"
+
+                app:layout_constraintLeft_toRightOf="@id/gl_details_left"
+
+                app:layout_constraintTop_toBottomOf="@id/et_edit_price" />
+
+
+            <EditText
+                android:id="@+id/et_edit_stocks"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="@font/montserrat"
+                android:hint="123"
+                android:inputType="number"
+                android:textAlignment="viewEnd"
+                app:layout_constraintLeft_toLeftOf="@id/gl_details_left"
+                app:layout_constraintRight_toRightOf="@id/gl_details_right"
+                app:layout_constraintTop_toBottomOf="@id/textView48" />
+
+            <ImageView
+                android:id="@+id/iv_edit_book"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginTop="10dp"
+                android:adjustViewBounds="true"
+                android:background="#FFFFFF"
+                android:foregroundGravity="top"
+                android:scaleType="fitStart"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_details_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="12dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_details_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.97" />
+
+            <Button
+                android:id="@+id/btn_edit_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/mobile_green"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="SAVE"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="@id/gl_details_right"
+                app:layout_constraintTop_toBottomOf="@id/et_edit_stocks" />
+
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="@id/iv_edit_book"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_edit_book">
+
+                <ImageView
+                    android:id="@+id/imageView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:tintMode="src_atop"
+                    app:srcCompat="@android:drawable/ic_menu_camera"
+                    app:tint="@color/mobile_gray" />
+
+                <TextView
+                    android:id="@+id/textView39"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center"
+                    android:text="Upload Image"
+                    android:textColor="@color/mobile_gray" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/c_details_nav"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/ib_edit_back"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:adjustViewBounds="false"
+            android:backgroundTint="@color/mobile_bg_white"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/vectorback"
+            app:tint="@color/mobile_green" />
+
+        <TextView
+            android:id="@+id/tv_edit_book"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:gravity="center"
+            android:text="Edit Book"
+            android:textColor="@color/mobile_green"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/ib_edit_back"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

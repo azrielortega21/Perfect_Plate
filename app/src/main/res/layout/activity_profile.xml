@@ -4,191 +4,489 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF9400"
+    android:background="@color/mobile_bg_white"
     tools:context=".ProfileActivity">
 
-    <TextView
-        android:id="@+id/textView5"
+    <Button
+        android:id="@+id/btn_logout"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/roundercorners_topleftandright_bg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline19"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline19"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.22" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.29
-" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline22"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
-
-    <TextView
-        android:id="@+id/profile_tv_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="25dp"
+        android:backgroundTint="#FFFFFF"
         android:fontFamily="@font/montserrat_bold"
-        android:text="Firstname Lastname"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline23" />
-
-    <TextView
-        android:id="@+id/profileRecipeDump2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="Recipes"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/profile_rv_recipes"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12"
-        app:layout_constraintVertical_bias="0.529" />
-
-    <TextView
-        android:id="@+id/profile_tv_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/montserrat"
-        android:text="username"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_tv_name" />
-
-    <TextView
-        android:id="@+id/profile_tv_norecipes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/montserrat"
-        android:text="Recipes: 2"
-        android:textColor="#8F8F8F"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_tv_username" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="0dp"
-        android:layout_height="0.5dp"
-        android:layout_marginTop="10dp"
-        android:background="#8F8F8F"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_tv_norecipes" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/profile_profile_card"
-        android:layout_width="100dp"
-        android:layout_height="0dp"
-        android:background="@drawable/shadow"
-        android:clipToPadding="false"
-        android:elevation="8dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="8dp"
-        app:cardPreventCornerOverlap="false"
-        app:layout_constraintBottom_toTopOf="@+id/guideline23"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline22">
-
-        <ImageView
-            android:id="@+id/profile_iv_profile_pic"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/popular1" />
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/profile_rv_recipes"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="LOG OUT"
+        android:textColor="@color/mobile_green"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@id/v_dividerbot"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profileRecipeDump2" >
+        app:strokeColor="@color/mobile_green"
+        app:strokeWidth="2dp" />
 
-    </androidx.recyclerview.widget.RecyclerView>
 
-    <ImageView
-        android:id="@+id/profile_iv_edit"
-        android:layout_width="31dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="24dp"
-        android:adjustViewBounds="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline19"
-        app:srcCompat="@drawable/settings" />
-
-    <ImageButton
-        android:id="@+id/ib_profile_back"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_profile_admin_func"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:backgroundTint="#00FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_arrow_back_blue"
-        app:tint="#02043f" />
+        android:layout_marginTop="25dp"
+        android:background="#FFFFFF"
+        android:padding="15dp"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_profile_my_orders">
 
-    <ImageButton
-        android:id="@+id/ib_profile_add"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="15dp"
-        android:backgroundTint="#00FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12"
-        app:srcCompat="@drawable/ic_baseline_add_24" />
 
-    <Button
-        android:id="@+id/btn_profile_logout"
-        android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_wpf_administrator" />
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Admin Options"
+            android:textColor="@color/mobile_green"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@id/imageView12"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/v_admin_divider"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="#868484"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView30"
+
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_manage_admins"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/ll_manage_books"
+            app:layout_constraintTop_toBottomOf="@id/v_admin_divider">
+
+            <ImageView
+                android:id="@+id/imageView13"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:backgroundTint="@color/mobile_gray"
+                app:srcCompat="@drawable/ic_wpf_administrator"
+                app:tint="@color/mobile_gray" />
+
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:backgroundTint="@color/mobile_gray"
+                android:fontFamily="@font/montserrat"
+                android:text="Manage Admins"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_manage_books"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toRightOf="@id/ll_manage_admins"
+            app:layout_constraintRight_toLeftOf="@id/ll_manage_orders"
+            app:layout_constraintTop_toBottomOf="@id/v_admin_divider">
+
+            <ImageView
+                android:id="@+id/imageView14"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:backgroundTint="@color/mobile_gray"
+                app:srcCompat="@drawable/ic_icomoon_free_books"
+                app:tint="@color/mobile_gray" />
+
+            <TextView
+                android:id="@+id/textView39"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:backgroundTint="@color/mobile_gray"
+                android:fontFamily="@font/montserrat"
+                android:text="Manage Books"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_manage_orders"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toRightOf="@id/ll_manage_books"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v_admin_divider">
+
+            <ImageView
+                android:id="@+id/imageView15"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:backgroundTint="@color/mobile_gray"
+                app:srcCompat="@drawable/ic_clarity_list_solid_badged"
+                app:tint="@color/mobile_gray" />
+
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:backgroundTint="@color/mobile_gray"
+                android:fontFamily="@font/montserrat"
+                android:text="Manage Books"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_profile_details"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:layout_marginTop="5dp"
-        android:padding="0dp"
-        android:text="Logout"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@color/mobile_green"
+        android:padding="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_bi_person_circle" />
+
+        <TextView
+            android:id="@+id/tv_profile_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Taylor Alison Swift"
+            android:textColor="#FFFFFF"
+            app:layout_constraintLeft_toRightOf="@id/imageView5"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_profile_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="@font/montserrat"
+            android:text="0947 123 4567"
+            android:textColor="#FFFFFF"
+            app:layout_constraintLeft_toRightOf="@id/imageView5"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_profile_name" />
+
+        <TextView
+            android:id="@+id/tv_profile_street"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Street Address"
+            android:textColor="#FFFFFF"
+            app:layout_constraintLeft_toRightOf="@id/imageView5"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_profile_number" />
+
+        <TextView
+            android:id="@+id/tv_profile_city_province_postal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:fontFamily="@font/montserrat"
+            android:text="San Pedro, Laguna, 4023"
+            android:textColor="#FFFFFF"
+            app:layout_constraintLeft_toRightOf="@id/imageView5"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_profile_street" />
+
+        <ImageButton
+            android:id="@+id/ib_profile_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/mobile_green"
+            app:tint="#FFFFFF"
+            app:srcCompat="@drawable/ic_akar_icons_edit"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+           />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_profile_my_orders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:padding="15dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_profile_details">
+
+        <LinearLayout
+            android:id="@+id/ll_to_pay"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/ll_to_receive"
+            app:layout_constraintTop_toBottomOf="@id/v_search_divider">
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:backgroundTint="@color/mobile_gray"
+                app:srcCompat="@drawable/ic_bi_cash_coin"
+                app:tint="@color/mobile_gray" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/mobile_gray"
+                android:fontFamily="@font/montserrat"
+                android:text="To Pay"
+                android:textAlignment="center"
+                android:textColor="@color/mobile_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_to_receive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toRightOf="@id/ll_to_pay"
+            app:layout_constraintRight_toLeftOf="@id/ll_delivered"
+            app:layout_constraintTop_toBottomOf="@id/v_search_divider">
+
+            <ImageView
+                android:id="@+id/imageView9"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:backgroundTint="@color/mobile_gray"
+                app:srcCompat="@drawable/ic_fa_truck"
+                app:tint="@color/mobile_gray" />
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/mobile_gray"
+                android:fontFamily="@font/montserrat"
+                android:text="To Receive"
+                android:textAlignment="center"
+                android:textColor="@color/mobile_gray" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_delivered"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toRightOf="@id/ll_to_receive"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v_search_divider">
+
+            <ImageView
+                android:id="@+id/imageView11"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/vectorcheck"
+                app:tint="@color/mobile_gray" />
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/mobile_gray"
+                android:fontFamily="@font/montserrat"
+                android:text="Delivered"
+                android:textAlignment="center"
+                android:textColor="@color/mobile_gray" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_clarity_list_solid_badged" />
+
+        <TextView
+            android:id="@+id/textView28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="My Orders"
+            android:textColor="@color/mobile_green"
+            android:textSize="18sp"
+            app:layout_constraintLeft_toRightOf="@id/imageView6"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_view_all_orders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="View all Orders >"
+            android:textColor="@color/mobile_gray"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/v_search_divider"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="#868484"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView28"
+
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_search"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        android:paddingTop="7dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/ll_cart">
+
+        <ImageView
+            android:id="@+id/iv_search_search"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            app:tint="#868484"
+            app:srcCompat="@drawable/ic_search" />
+
+        <TextView
+            android:id="@+id/tv_search_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Search"
+            android:textAlignment="center"
+            android:textColor="#868484"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_cart"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        android:paddingTop="7dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/ll_search"
+        app:layout_constraintRight_toLeftOf="@id/ll_profile">
+
+        <ImageView
+            android:id="@+id/iv_search_cart"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/ic_bx_cart" />
+
+        <TextView
+            android:id="@+id/tv_search_cart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Cart"
+            android:textAlignment="center"
+            android:textColor="#868484"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_profile"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        android:paddingTop="7dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/ll_cart"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_search_profile"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            app:tint="@color/mobile_green"
+            app:srcCompat="@drawable/vectorperson" />
+
+        <TextView
+            android:id="@+id/tv_search_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="Profile"
+            android:textAlignment="center"
+            android:textColor="@color/mobile_green"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/v_dividerbot"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/mobile_gray"
+        app:layout_constraintBottom_toTopOf="@id/ll_profile"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

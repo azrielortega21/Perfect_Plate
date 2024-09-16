@@ -1,10 +1,7 @@
 package com.mobdeve.s14.group4;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,154 +9,180 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
-
-import java.util.ArrayList;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    private RecyclerView rvRecipes;
-    private RecyclerView.LayoutManager manager;
-    private ProfileAdapter adapter;
-
-    private ImageView ivEdit;
-    private ImageView ivProfilePic;
     private TextView tvName;
-    private TextView tvUsername;
-    private TextView tvRecipes;
+    private TextView tvContactNo;
+    private TextView tvStreet;
+    private TextView tvAddress;
 
-    private FirebaseUser user;
-    private DatabaseReference databaseReference;
+    private LinearLayout llCart;
+    private LinearLayout llSearch;
+    private LinearLayout llManageAdmins;
 
-    private ImageButton ibBack;
-    private ImageButton ibAdd;
+    private ConstraintLayout clAdmin;
+
     private Button btnLogout;
 
-    private FirebaseAuth.AuthStateListener authStateListener;
+    private ImageButton ibEditProfile;
+
+    private boolean isRefreshing;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        this.initRecyclerView();
-        this.initComponents();
+        this.isRefreshing = false;
+
+        initComponents();
+        initializeUser();
     }
+    private void initComponents() {
+        //TEXT VIEWS
+        tvName = findViewById(R.id.tv_profile_name);
+        tvContactNo = findViewById(R.id.tv_profile_number);
+        tvStreet = findViewById(R.id.tv_profile_street);
+        tvAddress = findViewById(R.id.tv_profile_city_province_postal);
 
-    private void signOut(){
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
-        GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        //LINEAR LAYOUT
+        llCart = findViewById(R.id.ll_cart);
+        llSearch = findViewById(R.id.ll_search);
 
-        mGoogleSignInClient.signOut();
-        FirebaseAuth.getInstance().signOut();
-    }
+        llManageAdmins = findViewById(R.id.ll_manage_admins);
 
-    private void initComponents(){
-        this.ivEdit = findViewById(R.id.profile_iv_edit);
-        this.tvName = findViewById(R.id.profile_tv_name);
-        this.tvUsername = findViewById(R.id.profile_tv_username);
-        this.tvRecipes = findViewById(R.id.profile_tv_norecipes);
-        this.ibBack = findViewById(R.id.ib_profile_back);
-        this.ibAdd = findViewById(R.id.ib_profile_add);
-        this.btnLogout = findViewById(R.id.btn_profile_logout);
-        this.ivProfilePic = findViewById(R.id.profile_iv_profile_pic);
+        //CONSTRAINT LAYOUT
+        clAdmin = findViewById(R.id.cl_profile_admin_func);
+
+        //BUTTONS
+        btnLogout = findViewById(R.id.btn_logout);
+
+        //IMAGE BUTTONS
+        ibEditProfile = findViewById(R.id.ib_profile_edit);
 
         User user = DataHelper.user;
+        String address = user.getAddress().getCity() + ", " + user.getAddress().getState() + ", " + user.getAddress().getPostalCode();
 
-        if(user.getFirebaseUser().getProfile_Image() != null){
-            Log.d("userPic", user.getFirebaseUser().getProfile_Image().getmImageUrl());
-            Picasso.with(ProfileActivity.this)
-                    .load(user.getFirebaseUser().getProfile_Image().getmImageUrl())
-                    .placeholder(R.drawable.vectorperson)
-                    .fit()
-                    .centerCrop()
-                    .into(ivProfilePic);
-        }
-        else{
-            ivProfilePic.setImageResource(R.drawable.vectorperson);
-        }
+        tvName.setText(user.getFullName());
+        tvContactNo.setText(user.getContactNo());
+        tvStreet.setText(user.getAddress().getStreet());
+        tvAddress.setText(address);
 
-
-        tvName.setText(DataHelper.user.getFullName());
-        tvUsername.setText(DataHelper.user.getUsername());
-        String recipeCount = "Recipes: " + DataHelper.user.getUserRecipesCount();
-        tvRecipes.setText(recipeCount);
-
-        btnLogout.setOnClickListener(new View.OnClickListener() {
+        this.llManageAdmins.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this,
-                        LoginActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
+                Intent i = new Intent (ProfileActivity.this, AdminAccessActivity.class);
+                startActivity(i);
             }
         });
 
-        ibAdd.setOnClickListener(new View.OnClickListener() {
+        this.btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(ProfileActivity.this, CreateRecipeActivity1.class);
-                startActivityForResult(i, 1);
+                btnLogout.setEnabled(false);
+                FirebaseAuth.getInstance().signOut();
+
+                Intent i = new Intent(ProfileActivity.this, MainActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
             }
         });
 
-        ibBack.setOnClickListener(new View.OnClickListener() {
+        this.ibEditProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ProfileActivity.this, EditProfileActivity.class);
+                startActivity(i);
+            }
+        });
+
+        this.llSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
 
-        ivEdit.setOnClickListener(new View.OnClickListener() {
+        this.llCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, EditProfileActivity.class);
-                startActivityForResult(intent, 1);
-            }
-        });
-
-        btnLogout.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                signOut();
-                Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
-                ProfileActivity.this.startActivity(intent);
+                Intent i = new Intent(ProfileActivity.this, AddToCartActivity.class);
+                startActivity(i);
             }
         });
     }
 
-    private void initRecyclerView() {
-        rvRecipes = findViewById(R.id.profile_rv_recipes);
+    private void initializeUser(){
+        DataHelper.userDatabase.getUserIRT(DataHelper.user.getUserId(), new CallbackListener() {
+            @Override
+            public void onSuccess(Object o) { //If user exists
+                User user = (User) o;
+                DataHelper.user = user;
 
-        manager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        rvRecipes.setLayoutManager(manager);
+                if(user.isAdmin()){
+                    user.setAdmin(true);
+                    clAdmin.setVisibility(View.VISIBLE);
+                    refreshOrders();
+                }
+                else{
+                    user.setAdmin(false);
+                    clAdmin.setVisibility(View.GONE);
+                }
 
-        adapter = new ProfileAdapter(DataHelper.user.getUserRecipes());
-        rvRecipes.setAdapter(adapter);
+                String address = user.getAddress().getCity() + ", " + user.getAddress().getState() + ", " + user.getAddress().getPostalCode();
+
+                tvName.setText(user.getFullName());
+                tvContactNo.setText(user.getContactNo());
+                tvStreet.setText(user.getAddress().getStreet());
+                tvAddress.setText(address);
+            }
+
+            @Override
+            public void onFailure() { //If user does not exist.
+                showError("User does not exist, Log in again");
+
+                Intent i = new Intent(ProfileActivity.this, MainActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
+            }
+        });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        this.recreate();
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//
+//        //Check if there were realtime updates to user made by other users
+//        initializeUser();
+//    }
+
+    private void refreshOrders(){
+        if (!isRefreshing){
+            isRefreshing = true;
+
+            DataHelper.asyncRefreshOrders(this, new CallbackListener() {
+                @Override
+                public void onSuccess(Object o) {
+                    isRefreshing = false;
+                }
+
+                @Override
+                public void onFailure() {
+                    isRefreshing = false;
+                    showError("Failed to refresh the page");
+                }
+            });
+        }
+    }
+
+    private void showError(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }

@@ -11,21 +11,22 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class SearchFilterActivity extends AppCompatActivity {
     private TextView tvCategory;
     private ImageButton ibBack;
-    private CardView cvFood;
+
     private RecyclerView rvFilterCategory;
-    private ArrayList<Recipe> filterRecipe;
+    private ArrayList<Book> filterBook;
     private RecyclerView.LayoutManager filterCategoryManager;
     private RecentAdapter filterAdapter;
     private TextView tvNoResult;
 
+    private String key;
+    private String categ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,43 +36,21 @@ public class SearchFilterActivity extends AppCompatActivity {
         this.tvCategory = findViewById(R.id.tv_category);
         this.ibBack = findViewById(R.id.ib_category_back);
         this.tvNoResult = findViewById(R.id.tv_no_result);
-        this.filterRecipe = new ArrayList<Recipe>();
 
         Intent i = getIntent();
 
-        String categ = i.getStringExtra(SearchActivity.KEY_CATEGORY);
-        String key = i.getStringExtra(SearchActivity.KEY_SEARCH);
+        this.key = i.getStringExtra(DataHelper.KEY_SEARCH);
+        this.categ = i.getStringExtra(DataHelper.KEY_CATEGORY);
         Log.d("CATEG", categ);
 
-        if (categ.equalsIgnoreCase("All Recipes")){
-            filterRecipe = DataHelper.allRecipes;
-        } else {
-            for (Recipe recipe : DataHelper.allRecipes){
-                if (recipe.getCategory().equalsIgnoreCase(categ)){
-                    filterRecipe.add(recipe);
-                }
-            }
+        this.filterBook = getList();
+
+        if (this.key.length() == 0){
+            this.tvCategory.setText(categ + " Books");
         }
-
-        if(!key.equalsIgnoreCase("-9999")){
-            for (Recipe recipe : DataHelper.allRecipes){
-                String tempName = recipe.getRecipeName().toLowerCase();
-                String tempKey = key.toLowerCase();
-
-                if (tempName.contains(tempKey)){
-                    filterRecipe.add(recipe);
-                }
-            }
+        else{
+            this.tvCategory.setText("\"" + key + "\" Books");
         }
-
-        String temp;
-        if (!categ.equalsIgnoreCase("-9999")){
-            temp = "'" + categ + "'";
-        } else {
-            temp = "'" + key + "'";
-        }
-
-        this.tvCategory.setText(temp);
 
         this.ibBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,23 +61,75 @@ public class SearchFilterActivity extends AppCompatActivity {
 
         this.initFilter();
 
-        if(this.filterRecipe.size() == 0){
+        if(this.filterBook.size() == 0){
             tvNoResult.setVisibility(View.VISIBLE);
         } else {
             tvNoResult.setVisibility(View.GONE);
         }
     }
 
-    private void initFilter(){
+    @Override
+    protected void onResume() {
+        super.onResume();
+        this.refreshList(new CallbackListener() {
+            @Override
+            public void onSuccess(Object o) {
+                filterBook = (ArrayList<Book>) o;
+                filterAdapter.notifyDataSetChanged();
+            }
 
-        Log.d("FILTER SIZE", String.valueOf(this.filterRecipe.size()));
+            @Override
+            public void onFailure() {
+                showError("Failed to reload books");
+            }
+        });
+    }
+
+    private void initFilter(){
+        Log.d("FILTER SIZE", String.valueOf(this.filterBook.size()));
         this.rvFilterCategory = findViewById(R.id.rv_filter_category);
 
         this.filterCategoryManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         this.rvFilterCategory.setLayoutManager(this.filterCategoryManager);
 
-        this.filterAdapter = new RecentAdapter(this.filterRecipe);
+        this.filterAdapter = new RecentAdapter(this.filterBook);
         this.rvFilterCategory.setAdapter(this.filterAdapter);
     }
 
+    private ArrayList<Book> getList(){
+        ArrayList<Book> temp = new ArrayList<Book>();
+
+        if (categ.equalsIgnoreCase("ALL")){
+            for (Book b : DataHelper.allBooks){
+                if (b.getBookName().toLowerCase().contains(key.toLowerCase()))
+                    temp.add(b);
+            }
+        } else {
+            for (Book book : DataHelper.allBooks){
+                if (book.getCategory().equalsIgnoreCase(categ)){
+                    temp.add(book);
+                }
+            }
+        }
+
+        return temp;
+    }
+
+    private void refreshList(CallbackListener callbackListener){
+        DataHelper.asyncRefreshBooks(this, new CallbackListener() {
+            @Override
+            public void onSuccess(Object o) {
+                callbackListener.onSuccess(getList());
+            }
+
+            @Override
+            public void onFailure() {
+                callbackListener.onFailure();
+            }
+        });
+    }
+
+    private void showError(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
 }

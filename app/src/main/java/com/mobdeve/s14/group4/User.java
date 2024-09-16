@@ -1,139 +1,229 @@
 package com.mobdeve.s14.group4;
 
+import android.util.Log;
+
+import com.google.firebase.database.Exclude;
+
 import java.util.ArrayList;
 
-public class User extends FirebaseUser{
-    private ArrayList<Recipe> userRecipes;
-    private ArrayList<Recipe> faveRecipes;
+public class User {
+    private String userId;
 
-    public User(){}
+    private String fullName;
+    private String email;
+    private String password;
+    private Address address;
 
-    public User(FirebaseUser user){
-        setUserId(user.getUserId());
+    private String contactNo;
 
-        setUsername(user.getUsername());
-        setEmail(user.getEmail());
-        setPassword(user.getPassword());
+    private Order cart;
 
-        setFirstName(user.getFirstName());
-        setLastName(user.getLastName());
+    private boolean isAdmin;
+    private ArrayList<String> userOrdersList;
 
-        setGoogleId(user.getGoogleId());
+    //
+    // Excluded from Firebase
+    //
+    private ArrayList<Order> orderHistory;
 
-        setUserRecipesList(user.getUserRecipesList());
-        setFaveRecipesList(user.getFaveRecipesList());
 
-        setProfile_Image(user.getProfile_Image());
-
-        initializeRecipeLists();
+    public User(){
+        this.isAdmin = false;
+        this.userOrdersList = new ArrayList<String>();
+        this.orderHistory = new ArrayList<Order>();
     }
 
-    public User(String email, String  password, String username, String firstName, String lastName){
-        super(email, password, username, firstName, lastName);
+    public User(String fullName, String email, String  password, Address address, String contactNo){
+        this.fullName = fullName;
+        this.email = email;
+        this.password = password;
+        this.address = address;
+        this.contactNo = contactNo;
 
-        this.userRecipes = new ArrayList<Recipe>();
-        this.faveRecipes = new ArrayList<Recipe>();
+        this.isAdmin = false;
+        this.userOrdersList = new ArrayList<String>();
+        this.orderHistory = new ArrayList<Order>();
     }
 
-    public User(String email, String  password, String username, String firstName, String lastName, String birthday){
-        super(email, password, username, firstName, lastName, birthday);
+    public User(String fullName, String email, String  password, Address address, boolean isAdmin, String contactNo){
+        this.fullName = fullName;
+        this.email = email;
+        this.password = password;
+        this.address = address;
+        this.contactNo = contactNo;
 
-        this.userRecipes = new ArrayList<Recipe>();
-        this.faveRecipes = new ArrayList<Recipe>();
+        this.isAdmin = isAdmin;
+        this.userOrdersList = new ArrayList<String>();
+        this.orderHistory = new ArrayList<Order>();
     }
 
-    public User(String googleId, String username, String firstName, String lastName){
-        super(googleId, username, firstName, lastName);
-
-        this.userRecipes = new ArrayList<Recipe>();
-        this.faveRecipes = new ArrayList<Recipe>();
+    public String getUserId(){
+        return this.userId;
     }
 
-//    public User(String email, String  password, String username, String firstName, String lastName, String birthday, UploadImage upload){
-//        super(email, password, username, firstName, lastName, birthday, upload);
-//
-//        this.userRecipes = new ArrayList<Recipe>();
-//        this.faveRecipes = new ArrayList<Recipe>();
-//    }
-//
-//    public User(String googleId, String username, String firstName, String lastName, UploadImage upload){
-//        super(googleId, username, firstName, lastName, upload);
-//
-//        this.userRecipes = new ArrayList<Recipe>();
-//        this.faveRecipes = new ArrayList<Recipe>();
-//    }
-
-
-    private void initializeRecipeLists(){
-        RecipeDatabase recipeDatabase = new RecipeDatabase();
-
-        this.userRecipes = recipeDatabase.findRecipes(getUserRecipesList());
-        this.faveRecipes = recipeDatabase.findRecipes(getFaveRecipesList());
-
-        DataHelper.userDatabase.updateFaveRecipes(getUserId(), getFaveRecipesList(), getFaveRecipesCount());
+    public String getFullName() {
+        return fullName;
     }
 
-    public String getFullName(){
-        return getFirstName() + " " + getLastName();
+    public String getEmail(){
+        return this.email;
     }
 
-    //add user recipe to current list of recipes
-    public void addUserRecipe(Recipe recipe){
-        //add to local lists
-        this.userRecipes.add(recipe);
-        addUserRecipeId(recipe.getId());
+    public String getPassword(){
+        return this.password;
     }
 
-    public void addFaveRecipe(Recipe recipe){
-        this.faveRecipes.add(recipe);
-        addFaveRecipeId(recipe.getId());
-
-        recipe.setFaveCount(recipe.getFaveCount() + 1);
+    public Address getAddress() {
+        return this.address;
     }
 
-    /**
-     * Removes user recipe from User and FirebaseUser
-     */
-    public void removeUserRecipe(String id){
-        int removeIndex = 0;
+    public String getContactNo() {
+        return this.contactNo;
+    }
 
-        for (int i = 0; i < getUserRecipesCount(); i++){
-            if (this.userRecipes.get(i).getId().equals(id)){
-                removeIndex = i;
+    public Order getCart(){
+        return this.cart;
+    }
+
+    public boolean isAdmin() {
+        return this.isAdmin;
+    }
+
+    public ArrayList<String> getUserOrdersList() {
+        return this.userOrdersList;
+    }
+
+    public void setUserId(String userId){
+        this.userId = userId;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public void setContactNo(String contactNo) {
+        this.contactNo = contactNo;
+    }
+
+    public void setCart(Order cart) {
+        this.cart = cart;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
+
+    public void setUserOrdersList(ArrayList<String> userOrdersList) {
+        this.userOrdersList = userOrdersList;
+    }
+
+    //
+    // EXCLUDED FROM FIREBASE
+    //
+    @Exclude
+    public ArrayList<Order> getOrderHistory() {
+        return orderHistory;
+    }
+
+    @Exclude
+    public void setOrderHistory(ArrayList<Order> orderHistory) {
+        this.orderHistory = orderHistory;
+    }
+
+    //
+    // METHODS
+    //
+    public void initializeOrderLists(CallbackListener callbackListener){
+        if (this.userOrdersList != null){
+            DataHelper.orderDatabase.getOrders(this.userOrdersList, new CallbackListener() {
+                @Override
+                public void onSuccess(Object o) {
+                    ArrayList<Order> orders = (ArrayList<Order>) o;
+
+                    for (Order t_o : orders){
+                        for (OrderDetails t_od : t_o.getOrderDetails()){
+                            Book b = DataHelper.bookDatabase.findBook(t_od.getBookId());
+                            t_od.setBook(b);
+                        }
+                    }
+
+                    setOrderHistory(orders);
+
+                    callbackListener.onSuccess(null);
+                }
+
+                @Override
+                public void onFailure() {
+                    Log.d("FAILURE", "Failed to get user orders");
+                    setOrderHistory(new ArrayList<Order>());
+                    callbackListener.onFailure();
+                }
+            });
+        }
+        else{
+            setOrderHistory(new ArrayList<Order>());
+            callbackListener.onSuccess(null);
+        }
+    }
+
+    //
+    // CART FUNCTIONS
+    //
+    @Exclude
+    public void initCart(){
+        if (this.cart == null){
+            this.cart = new Order(this.getFullName(), this.getAddress());
+            this.cart.setId("cart");
+        }
+        else{
+            for (OrderDetails od : this.cart.getOrderDetails()){
+                Book b = DataHelper.bookDatabase.findBook(od.getBookId());
+                od.setBook(b);
             }
         }
-
-        removeUserRecipeId(id);
-        this.userRecipes.remove(removeIndex);
     }
 
-    /**
-     * Removes favorite recipe from User and FirebaseUser
-     */
-    public void removeFaveRecipe(Recipe recipe){
-        int removeIndex = 0;
-
-        for (int i = 0; i < getFaveRecipesCount(); i++){
-            if (this.faveRecipes.get(i).getId().equals(recipe.getId())){
-                removeIndex = i;
-            }
-        }
-
-        removeFaveRecipeId(recipe.getId());
-        this.faveRecipes.remove(removeIndex);
-
-        recipe.setFaveCount(recipe.getFaveCount() - 1);
+    @Exclude
+    public void refreshCartInfo(){
+        this.cart.setCustomer(this.getFullName());
+        this.cart.setAddress(this.getAddress());
     }
 
-    public ArrayList<Recipe> getUserRecipes(){
-        return this.userRecipes;
+    @Exclude
+    public void addToCart(OrderDetails od){
+        this.cart.addOrderDetail(od);
+        DataHelper.userDatabase.updateCart(this.getUserId(), this.cart);
     }
 
-    public ArrayList<Recipe> getFaveRecipes(){
-        return this.faveRecipes;
+    @Exclude
+    public void removeFromCart(int position){
+        this.cart.removeOrderDetail(position);
+        DataHelper.userDatabase.updateCart(this.getUserId(), this.cart);
     }
 
-    public FirebaseUser getFirebaseUser(){
-        return duplicateUser();
+    @Exclude
+    public void setCart(ArrayList<OrderDetails> cart){
+        this.cart.setOrderDetails(cart);
+        DataHelper.userDatabase.updateCart(this.getUserId(), this.cart);
+    }
+
+    //
+    // ORDER FUNCTIONS
+    //
+    public void addOrder(Order order){
+        this.orderHistory.add(order);
+        this.userOrdersList.add(order.getId());
     }
 }

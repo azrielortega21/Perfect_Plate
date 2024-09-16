@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f4f0ef"
+    android:background="#f2f2f2"
     tools:context=".SearchActivity">
 
     <TextView
@@ -27,17 +27,17 @@
         app:layout_constraintBottom_toBottomOf="@id/tv_search_top_search"
         app:layout_constraintLeft_toLeftOf="@id/gl_search_left"
         app:layout_constraintTop_toTopOf="@id/tv_search_top_search"
-        app:srcCompat="@drawable/ic_vectorsearch" />
+        app:srcCompat="@drawable/ic_search" />
 
     <EditText
-        android:id="@+id/et_search_recipe_search"
+        android:id="@+id/et_search_book_search"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginLeft="10dp"
         android:background="@android:color/transparent"
         android:ems="10"
         android:fontFamily="@font/montserrat"
-        android:hint="Search a Recipe..."
+        android:hint="What book are you looking for?"
         android:inputType="textPersonName"
         android:textColor="#99000000"
         android:textSize="18sp"
@@ -52,11 +52,11 @@
     <View
         android:id="@+id/v_search_divider"
         android:layout_width="wrap_content"
-        android:layout_height="2dp"
+        android:layout_height="1dp"
         android:layout_marginTop="10dp"
-        android:background="#02043F"
+        android:background="@color/mobile_gray"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_search_recipe_search" />
+        app:layout_constraintTop_toBottomOf="@id/et_search_book_search" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_search_left"
@@ -72,321 +72,502 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.98" />
 
-    <TextView
-        android:id="@+id/tv_search_label"
+    <ScrollView
+        android:id="@+id/sv_search_container"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="View Perfect Plate Recipes By Category"
-        android:textColor="#02043F"
-        android:textSize="25sp"
-        app:layout_constraintLeft_toLeftOf="@id/gl_search_left"
-        app:layout_constraintRight_toRightOf="@id/gl_search_right"
-        app:layout_constraintTop_toBottomOf="@id/v_search_divider" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_search_appetizer"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="5dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="5dp"
-        app:layout_constraintLeft_toLeftOf="@id/gl_search_left"
-        app:layout_constraintRight_toLeftOf="@id/cv_search_pasta"
-        app:layout_constraintTop_toBottomOf="@id/tv_search_label">
-
-        <ImageView
-            android:id="@+id/imageView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/appetizer" />
-
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_gravity="bottom"
-            android:background="#ff9400"
-            android:fontFamily="@font/montserrat_bold"
-            android:paddingLeft="5dp"
-            android:text="Appetizer"
-            android:textColor="#F4F0EF"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="@font/montserrat"
-            android:paddingLeft="5dp"
-            android:text="View Recipes >"
-            android:textColor="#F4F0EF"
-            android:textSize="12sp" />
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_search_pasta"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="5dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="5dp"
-        app:layout_constraintLeft_toRightOf="@id/cv_search_appetizer"
-        app:layout_constraintRight_toLeftOf="@id/cv_search_main"
-        app:layout_constraintTop_toBottomOf="@id/tv_search_label">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/pasta" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_gravity="bottom"
-            android:background="#ff9400"
-            android:fontFamily="@font/montserrat_bold"
-            android:paddingLeft="5dp"
-            android:text="Pasta"
-            android:textColor="#F4F0EF"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/textView19"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="@font/montserrat"
-            android:paddingLeft="5dp"
-            android:text="View Recipes >"
-            android:textColor="#F4F0EF"
-            android:textSize="12sp" />
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_search_main"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="5dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="5dp"
-        app:layout_constraintLeft_toRightOf="@id/cv_search_pasta"
-        app:layout_constraintRight_toLeftOf="@id/gl_search_right"
-        app:layout_constraintTop_toBottomOf="@id/tv_search_label">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/main" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_gravity="bottom"
-            android:background="#ff9400"
-            android:fontFamily="@font/montserrat_bold"
-            android:paddingLeft="5dp"
-            android:text="Main"
-            android:textColor="#F4F0EF"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="@font/montserrat"
-            android:paddingLeft="5dp"
-            android:text="View Recipes >"
-            android:textColor="#F4F0EF"
-            android:textSize="12sp" />
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_search_dessert"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="5dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="5dp"
-        app:layout_constraintLeft_toRightOf="@id/gl_search_left"
-        app:layout_constraintRight_toLeftOf="@id/cv_search_pastry"
-        app:layout_constraintTop_toBottomOf="@id/cv_search_appetizer">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/dessert" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_gravity="bottom"
-            android:background="#ff9400"
-            android:fontFamily="@font/montserrat_bold"
-            android:paddingLeft="5dp"
-            android:text="Dessert"
-            android:textColor="#F4F0EF"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="@font/montserrat"
-            android:paddingLeft="5dp"
-            android:text="View Recipes >"
-            android:textColor="#F4F0EF"
-            android:textSize="12sp" />
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_search_pastry"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="5dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="5dp"
-        app:layout_constraintLeft_toRightOf="@id/cv_search_dessert"
-        app:layout_constraintRight_toLeftOf="@id/cv_search_drinks"
-        app:layout_constraintTop_toBottomOf="@id/cv_search_pasta">
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/pastry" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_gravity="bottom"
-            android:background="#ff9400"
-            android:fontFamily="@font/montserrat_bold"
-            android:paddingLeft="5dp"
-            android:text="Pastry"
-            android:textColor="#F4F0EF"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="@font/montserrat"
-            android:paddingLeft="5dp"
-            android:text="View Recipes >"
-            android:textColor="#F4F0EF"
-            android:textSize="12sp" />
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_search_drinks"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="5dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="5dp"
-        app:layout_constraintLeft_toRightOf="@id/cv_search_pasta"
-        app:layout_constraintRight_toLeftOf="@id/gl_search_right"
-        app:layout_constraintTop_toBottomOf="@id/cv_search_main">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/drinks" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_gravity="bottom"
-            android:background="#ff9400"
-            android:fontFamily="@font/montserrat_bold"
-            android:paddingLeft="5dp"
-            android:text="Drinks"
-            android:textColor="#F4F0EF"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="@font/montserrat"
-            android:paddingLeft="5dp"
-            android:text="View Recipes >"
-            android:textColor="#F4F0EF"
-            android:textSize="12sp" />
-
-    </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/tv_search_view_all"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="View all Perfect Plate recipes"
-        android:textColor="#d30045"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/gl_search_left"
-        app:layout_constraintTop_toBottomOf="@+id/cv_search_dessert" />
-
-    <LinearLayout
-        android:id="@+id/ll_home"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:orientation="vertical"
-        android:paddingTop="7dp"
-        android:paddingBottom="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/v_dividerbot"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/ll_search">
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/v_search_divider">
 
-        <ImageView
-            android:id="@+id/iv_home_home"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            app:tint="#868484"
-            app:srcCompat="@drawable/vectorhome" />
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_home_home"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat"
-            android:text="Home"
-            android:textAlignment="center"
-            android:textColor="#868484"
-            android:textSize="12sp" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv_search_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="View Books By Category"
+                android:textColor="@color/mobile_green"
+                android:textSize="25sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_search_grade1"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="2dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/cv_search_grade2"
+                app:layout_constraintTop_toBottomOf="@id/tv_search_label">
+
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/book_cover" />
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/mobile_green"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:paddingLeft="5dp"
+                    android:text="Grade 1"
+                    android:textColor="#F4F0EF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/montserrat"
+                    android:paddingLeft="5dp"
+                    android:text="View Books >"
+                    android:textColor="#F4F0EF"
+                    android:textSize="12sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_search_grade2"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="2dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp"
+                app:layout_constraintLeft_toRightOf="@id/cv_search_grade1"
+                app:layout_constraintRight_toLeftOf="@id/cv_search_grade3"
+                app:layout_constraintTop_toBottomOf="@id/tv_search_label">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/book_cover" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/mobile_green"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:paddingLeft="5dp"
+                    android:text="Grade 2"
+                    android:textColor="#F4F0EF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/montserrat"
+                    android:paddingLeft="5dp"
+                    android:text="View Books >"
+                    android:textColor="#F4F0EF"
+                    android:textSize="12sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_search_grade3"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp"
+                app:layout_constraintLeft_toRightOf="@id/cv_search_grade2"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_search_label">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/book_cover" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/mobile_green"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:paddingLeft="5dp"
+                    android:text="Grade 3"
+                    android:textColor="#F4F0EF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/montserrat"
+                    android:paddingLeft="5dp"
+                    android:text="View Books >"
+                    android:textColor="#F4F0EF"
+                    android:textSize="12sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_search_grade5"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="2dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp"
+                app:layout_constraintLeft_toRightOf="@id/cv_search_grade4"
+                app:layout_constraintRight_toLeftOf="@id/cv_search_grade6"
+                app:layout_constraintTop_toBottomOf="@id/cv_search_grade2">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/book_cover" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/mobile_green"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:paddingLeft="5dp"
+                    android:text="Grade 5"
+                    android:textColor="#F4F0EF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/montserrat"
+                    android:paddingLeft="5dp"
+                    android:text="View Books >"
+                    android:textColor="#F4F0EF"
+                    android:textSize="12sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_search_grade7"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="2dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/cv_search_grade8"
+                app:layout_constraintTop_toBottomOf="@id/cv_search_grade4">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/book_cover" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/mobile_green"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:paddingLeft="5dp"
+                    android:text="Grade 7"
+                    android:textColor="#F4F0EF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/montserrat"
+                    android:paddingLeft="5dp"
+                    android:text="View Books >"
+                    android:textColor="#F4F0EF"
+                    android:textSize="12sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_search_grade6"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp"
+                app:layout_constraintLeft_toRightOf="@id/cv_search_grade5"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cv_search_grade3">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/book_cover" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/mobile_green"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:paddingLeft="5dp"
+                    android:text="Grade 6"
+                    android:textColor="#F4F0EF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/montserrat"
+                    android:paddingLeft="5dp"
+                    android:text="View Books >"
+                    android:textColor="#F4F0EF"
+                    android:textSize="12sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_search_grade4"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="2dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/cv_search_grade5"
+                app:layout_constraintTop_toBottomOf="@id/cv_search_grade1">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/book_cover" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/mobile_green"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:paddingLeft="5dp"
+                    android:text="Grade 4"
+                    android:textColor="#F4F0EF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/montserrat"
+                    android:paddingLeft="5dp"
+                    android:text="View Books >"
+                    android:textColor="#F4F0EF"
+                    android:textSize="12sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_search_grade8"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="2dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp"
+                app:layout_constraintLeft_toRightOf="@id/cv_search_grade7"
+                app:layout_constraintRight_toLeftOf="@id/cv_search_grade9"
+                app:layout_constraintTop_toBottomOf="@id/cv_search_grade5">
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/book_cover" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/mobile_green"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:paddingLeft="5dp"
+                    android:text="Grade 8"
+                    android:textColor="#F4F0EF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/montserrat"
+                    android:paddingLeft="5dp"
+                    android:text="View Books >"
+                    android:textColor="#F4F0EF"
+                    android:textSize="12sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_search_grade9"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp"
+                app:layout_constraintLeft_toRightOf="@id/cv_search_grade8"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cv_search_grade5">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/book_cover" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/mobile_green"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:paddingLeft="5dp"
+                    android:text="Grade 9"
+                    android:textColor="#F4F0EF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/montserrat"
+                    android:paddingLeft="5dp"
+                    android:text="View Books >"
+                    android:textColor="#F4F0EF"
+                    android:textSize="12sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_search_grade10"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/cv_search_all"
+                app:layout_constraintTop_toBottomOf="@id/cv_search_grade7">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/book_cover" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/mobile_green"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:paddingLeft="5dp"
+                    android:text="Grade 10"
+                    android:textColor="#F4F0EF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/montserrat"
+                    android:paddingLeft="5dp"
+                    android:text="View Books >"
+                    android:textColor="#F4F0EF"
+                    android:textSize="12sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_search_all"
+                android:layout_width="0dp"
+                android:layout_height="180dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="2dp"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/cv_search_grade10"
+                app:layout_constraintRight_toLeftOf="@id/cv_search_grade9"
+                app:layout_constraintTop_toBottomOf="@id/cv_search_grade8">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:background="@color/mobile_green"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:text="View All Books >"
+                    android:textColor="#F4F0EF"
+                    android:textSize="20sp" />
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
 
     <LinearLayout
         android:id="@+id/ll_search"
@@ -396,29 +577,30 @@
         android:paddingTop="7dp"
         android:paddingBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/ll_home"
-        app:layout_constraintRight_toLeftOf="@id/ll_create">
+        app:layout_constraintLeft_toRightOf="@id/gl_search_left"
+        app:layout_constraintRight_toLeftOf="@id/ll_cart">
 
         <ImageView
-            android:id="@+id/iv_home_search"
+            android:id="@+id/iv_search_search"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            app:srcCompat="@drawable/vectorsearch"
-            app:tint="#ff9400" />
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            app:srcCompat="@drawable/ic_search" />
 
         <TextView
-            android:id="@+id/tv_home_search"
+            android:id="@+id/tv_search_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
             android:text="Search"
             android:textAlignment="center"
-            android:textColor="#FF9400"
+            android:textColor="@color/mobile_green"
             android:textSize="12sp" />
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ll_create"
+        android:id="@+id/ll_cart"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:orientation="vertical"
@@ -426,20 +608,20 @@
         android:paddingBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toRightOf="@id/ll_search"
-        app:layout_constraintRight_toLeftOf="@id/ll_fav">
+        app:layout_constraintRight_toLeftOf="@id/ll_profile">
 
         <ImageView
-            android:id="@+id/iv_home_create"
+            android:id="@+id/iv_search_cart"
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            app:srcCompat="@drawable/plus_circlecreate" />
+            app:srcCompat="@drawable/ic_bx_cart" />
 
         <TextView
-            android:id="@+id/tv_home_create"
+            android:id="@+id/tv_search_cart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
-            android:text="Create"
+            android:text="Cart"
             android:textAlignment="center"
             android:textColor="#868484"
             android:textSize="12sp" />
@@ -453,17 +635,19 @@
         android:paddingTop="7dp"
         android:paddingBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/ll_fav"
+        app:layout_constraintLeft_toRightOf="@id/ll_cart"
         app:layout_constraintRight_toRightOf="parent">
 
         <ImageView
-            android:id="@+id/iv_home_profile"
+            android:id="@+id/iv_search_profile"
             android:layout_width="match_parent"
             android:layout_height="30dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
             app:srcCompat="@drawable/vectorperson" />
 
         <TextView
-            android:id="@+id/tv_home_profile"
+            android:id="@+id/tv_search_profile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
@@ -473,42 +657,13 @@
             android:textSize="12sp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_fav"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:orientation="vertical"
-        android:paddingTop="7dp"
-        android:paddingBottom="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/ll_create"
-        app:layout_constraintRight_toLeftOf="@id/ll_profile">
-
-        <ImageView
-            android:id="@+id/iv_home_fav"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            app:srcCompat="@drawable/vectorheart" />
-
-        <TextView
-            android:id="@+id/tv_home_fav"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat"
-            android:text="Favorites"
-            android:textAlignment="center"
-            android:textColor="#868484"
-            android:textSize="12sp" />
-    </LinearLayout>
     <View
         android:id="@+id/v_dividerbot"
         android:layout_width="wrap_content"
-        android:layout_height="2dp"
-
-        android:background="#02043F"
+        android:layout_height="1dp"
+        android:background="@color/mobile_gray"
         app:layout_constraintBottom_toTopOf="@id/ll_profile"
-        app:layout_constraintLeft_toLeftOf="parent"
-        />
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <SearchView
         android:id="@+id/sv_search"

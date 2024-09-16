@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+    android:background="@color/mobile_bg_white"
+    android:paddingBottom="10dp"
+    tools:context=".EditBookActivity">
+
+    <ScrollView
+        android:id="@+id/sv_details"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:foregroundGravity="top"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/c_details_nav">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_details_cont"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_details_book"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:foregroundGravity="top"
+                android:scaleType="fitStart"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/book_cover" />
+
+            <TextView
+                android:id="@+id/tv_details_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="The New Science Links: Teacher’s Reference Material "
+                android:textColor="@color/mobile_green"
+                android:textSize="20sp"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toRightOf="@id/gl_details_left"
+                app:layout_constraintRight_toRightOf="@id/gl_details_right"
+                app:layout_constraintTop_toBottomOf="@id/iv_details_book" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_details_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="12dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_details_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.97" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Authors: "
+                android:textColor="#000000"
+                android:textStyle="italic"
+                app:layout_constraintLeft_toRightOf="@id/gl_details_left"
+                app:layout_constraintTop_toBottomOf="@id/tv_details_title" />
+
+            <TextView
+                android:id="@+id/tv_details_authors"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Evelyn T. Larisma, Jan Jason Madriaga-Mariano"
+                android:textColor="#000000"
+                android:textStyle="italic"
+                app:layout_constraintLeft_toRightOf="@id/textView9"
+                app:layout_constraintRight_toLeftOf="@id/gl_details_right"
+                app:layout_constraintTop_toBottomOf="@id/tv_details_title" />
+
+            <TextView
+                android:id="@+id/tv_details_category"
+                android:layout_width="70dp"
+                android:layout_height="23dp"
+                android:layout_marginTop="10dp"
+
+                android:background="@color/mobile_yellow"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center"
+                android:text="GRADE 10"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                app:layout_constraintLeft_toRightOf="@id/gl_details_left"
+                app:layout_constraintTop_toBottomOf="@id/tv_details_authors" />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="available"
+                android:textSize="16sp"
+                app:layout_constraintRight_toRightOf="@id/gl_details_right"
+                app:layout_constraintTop_toBottomOf="@id/tv_details_category" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="₱"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="@id/gl_details_left"
+                app:layout_constraintTop_toBottomOf="@id/tv_details_category" />
+
+            <TextView
+                android:id="@+id/tv_deatils_available"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginRight="3dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="123"
+                android:textSize="16sp"
+                app:layout_constraintRight_toLeftOf="@id/textView20"
+                app:layout_constraintTop_toBottomOf="@id/tv_details_category" />
+
+            <TextView
+                android:id="@+id/tv_details_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="1234.00"
+                android:textColor="#000000"
+                android:textSize="20sp"
+
+                app:layout_constraintLeft_toRightOf="@id/textView21"
+
+                app:layout_constraintTop_toBottomOf="@id/tv_details_category" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/c_details_nav"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/ib_edit_back"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:adjustViewBounds="false"
+            android:backgroundTint="@color/mobile_bg_white"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/vectorback"
+            app:tint="@color/mobile_green" />
+
+        <ImageButton
+            android:id="@+id/ib_edit_book"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:adjustViewBounds="false"
+            android:backgroundTint="@color/proj_white"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_akar_icons_edit"
+            app:tint="@color/mobile_green" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
