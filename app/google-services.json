@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "291440976878",
-    "project_id": "perfect-plate-e7bbe",
-    "storage_bucket": "perfect-plate-e7bbe.appspot.com"
+    "project_number": "872555913898",
+    "project_id": "book-club-bb717",
+    "storage_bucket": "book-club-bb717.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:291440976878:android:72dda244bbb3698cba24ff",
+        "mobilesdk_app_id": "1:872555913898:android:0792ef2083db25bc3f66d3",
         "android_client_info": {
           "package_name": "com.mobdeve.s14.group4"
         }
       },
       "oauth_client": [
         {
-          "client_id": "291440976878-t0uvtk44iplvllf64kbu09k7pupsnjgn.apps.googleusercontent.com",
+          "client_id": "872555913898-a1eeg6uq9ofburlchdl9o9k689pa6ej7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDP3c7CnQWSyDE8oKXLr4Qchm6pqxs99Uo"
+          "current_key": "AIzaSyCvGQSubGFFVQJzYyK2d2im7NyACgTejR0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "291440976878-t0uvtk44iplvllf64kbu09k7pupsnjgn.apps.googleusercontent.com",
+              "client_id": "872555913898-a1eeg6uq9ofburlchdl9o9k689pa6ej7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -4,17 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/proj_white"
+    android:background="@color/mobile_bg_white"
     tools:context=".SearchFilterActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="55dp"
-        android:background="@color/proj_blue"
+        android:background="@color/mobile_green"
         android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
 
         <ImageButton
             android:id="@+id/ib_category_back"
@@ -43,12 +44,11 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@id/linearLayout2"
         app:layout_constraintBottom_toBottomOf="parent"
-        >
+        app:layout_constraintLeft_toLeftOf="parent"
+
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout2">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -59,11 +59,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_bold"
                 android:paddingTop="3dp"
                 android:paddingBottom="3dp"
-                android:fontFamily="@font/montserrat_bold"
                 android:text="TextView"
-                android:textColor="@color/proj_red_pink"
+                android:textColor="@color/mobile_green"
                 android:textSize="18dp"
                 app:layout_constraintLeft_toRightOf="@id/tv_showing_results"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -72,31 +72,30 @@
                 android:id="@+id/tv_showing_results"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="Showing Results for  "
-                android:textColor="@color/proj_red_pink"
-                android:textSize="18dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="15dp"
                 android:clipToPadding="true"
+                android:fontFamily="@font/montserrat_bold"
                 android:paddingTop="3dp"
-                android:paddingBottom="3dp"/>
+                android:paddingBottom="3dp"
+                android:text="Showing Results for  "
+                android:textColor="@color/mobile_green"
+                android:textSize="18dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_filter_category"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_showing_results"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="15dp"
                 android:clipToPadding="true"
                 android:paddingTop="3dp"
-                android:paddingBottom="3dp"/>
+                android:paddingBottom="3dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_showing_results" />
 
             <TextView
                 android:id="@+id/tv_no_result"

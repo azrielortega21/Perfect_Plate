@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF9400"
+    android:background="@color/mobile_green"
     tools:context=".SignUpActivity2">
 
     <TextView
@@ -31,15 +31,14 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <EditText
-        android:id="@+id/signup2_et_fname"
+        android:id="@+id/signup2_et_sAddress"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#FF9400"
+        android:backgroundTint="@color/mobile_green"
         android:ems="10"
         android:fontFamily="@font/montserrat"
-        android:hint="First Name"
+        android:hint="Street Address"
         android:inputType="textPersonName"
         android:textColor="#02043F"
         android:textColorHint="#9E9E9E"
@@ -48,49 +47,48 @@
         app:layout_constraintTop_toTopOf="@+id/guideline16" />
 
     <EditText
-        android:id="@+id/signup2_et_lname"
+        android:id="@+id/signup2_et_city"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="35dp"
-        android:backgroundTint="#FF9400"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/mobile_green"
         android:ems="10"
         android:fontFamily="@font/montserrat"
-        android:hint="Last Name"
+        android:hint="City"
         android:inputType="textPersonName"
         android:textColor="#02043F"
         android:textColorHint="#9E9E9E"
         app:layout_constraintEnd_toStartOf="@+id/guideline12"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/signup2_iv_lname"
-        app:layout_constraintTop_toBottomOf="@+id/signup2_et_fname" />
+        app:layout_constraintStart_toEndOf="@+id/signup2_iv_fname"
+        app:layout_constraintTop_toBottomOf="@+id/signup2_et_sAddress" />
 
-    <ImageView
-        android:id="@+id/signup2_iv_birthday"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="52dp"
-        app:layout_constraintStart_toStartOf="@+id/guideline18"
-        app:layout_constraintTop_toBottomOf="@+id/signup2_iv_lname"
-        app:srcCompat="@drawable/perfectplate_birthday" />
+    <EditText
+        android:id="@+id/signup2_et_state"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/mobile_green"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="Province"
+        android:inputType="textPersonName"
+        android:textColor="#02043F"
+        android:textColorHint="#9E9E9E"
+        app:layout_constraintEnd_toStartOf="@+id/guideline12"
+        app:layout_constraintStart_toEndOf="@+id/signup2_iv_fname"
+        app:layout_constraintTop_toBottomOf="@+id/signup2_et_city" />
 
-    <ImageView
-        android:id="@+id/signup2_iv_lname"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="50dp"
-        app:layout_constraintStart_toStartOf="@+id/guideline18"
-        app:layout_constraintTop_toBottomOf="@+id/signup2_iv_fname"
-        app:srcCompat="@drawable/person" />
 
     <ImageView
         android:id="@+id/signup2_iv_fname"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="@+id/guideline18"
         app:layout_constraintTop_toTopOf="@+id/guideline16"
-        app:srcCompat="@drawable/person" />
+        app:srcCompat="@drawable/ic_fa6_solid_house_chimney" />
 
     <TextView
         android:id="@+id/signup2_tv_signin"
@@ -99,7 +97,7 @@
         android:layout_marginTop="36dp"
         android:fontFamily="@font/montserrat"
         android:text="Already have an account?"
-        android:textColor="#FF9400"
+        android:textColor="@color/mobile_green"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="parent"
@@ -111,13 +109,13 @@
         android:layout_height="40dp"
         android:layout_marginTop="48dp"
         android:background="@drawable/roundercornersbutton"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/montserrat_bold"
         android:foregroundTint="#FFFFFF"
         android:shadowColor="#7C7979"
         android:text="Sign Up"
         android:textColor="#FFFFFF"
         android:textSize="13sp"
-        app:backgroundTint="#FF9400"
+        app:backgroundTint="@color/mobile_green"
         app:layout_constraintEnd_toStartOf="@+id/guideline21"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline20"
@@ -197,7 +195,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/montserrat_bold"
         android:text="Sign Up"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
@@ -206,26 +204,6 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline11"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/signup2_et_birthday"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="44dp"
-        android:backgroundTint="#FF9400"
-        android:editable="false"
-        android:ems="10"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:fontFamily="@font/montserrat"
-        android:hint="MM/DD/YYYY"
-        android:inputType="date"
-        android:textColor="#02043F"
-        android:textColorHint="#9E9E9E"
-        app:layout_constraintEnd_toStartOf="@+id/guideline12"
-        app:layout_constraintStart_toEndOf="@+id/signup2_iv_birthday"
-        app:layout_constraintTop_toBottomOf="@+id/signup2_et_lname" />
 
     <ProgressBar
         android:id="@+id/pb_signup"
@@ -236,7 +214,21 @@
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/signup2_btn_signup"
         app:layout_constraintEnd_toStartOf="@+id/guideline21"
-        app:layout_constraintStart_toStartOf="@+id/guideline20"
-        app:layout_constraintTop_toBottomOf="@+id/signup2_et_birthday" />
+        app:layout_constraintStart_toStartOf="@+id/guideline20" />
+
+    <EditText
+        android:id="@+id/signup2_etPostalCode"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/mobile_green"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="Postal Code"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@+id/guideline12"
+        app:layout_constraintStart_toEndOf="@+id/signup2_iv_fname"
+        app:layout_constraintTop_toBottomOf="@+id/signup2_et_state" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,7 +9,7 @@
         pepper \n
     </string>
 
-    <string-array name = "category">
+    <string-array name="category">
         <item>Appetizer</item>
         <item>Pasta</item>
         <item>Main</item>

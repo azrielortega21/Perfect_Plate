@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="130dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp">
+
+            <ImageButton
+                android:id="@+id/ib_cart_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="#FFFFFF"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_delete_forever_24"
+                app:tint="@color/mobile_green" />
+
+            <ImageView
+                android:id="@+id/iv_cart_pic"
+                android:layout_width="90dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center_vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/book_cover" />
+
+            <TextView
+                android:id="@+id/tv_cart_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:ellipsize="end"
+
+                android:fontFamily="@font/montserrat_bold"
+                android:maxLines="2"
+                android:text="Title"
+                android:textColor="@color/mobile_green"
+                app:layout_constraintEnd_toStartOf="@id/ib_cart_delete"
+                app:layout_constraintLeft_toRightOf="@id/iv_cart_pic"
+                app:layout_constraintStart_toEndOf="@+id/iv_cart_pic"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_cart_category"
+                android:layout_width="55dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/mobile_yellow"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center"
+                android:text="GRADE 10"
+                android:textAlignment="center"
+                android:textColor="#FDFDFD"
+                android:textSize="10sp"
+                app:layout_constraintLeft_toRightOf="@id/iv_cart_pic"
+                app:layout_constraintTop_toBottomOf="@id/tv_cart_title" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintLeft_toRightOf="@id/iv_cart_pic"
+                app:layout_constraintTop_toBottomOf="@id/tv_cart_category">
+
+                <ImageButton
+                    android:id="@+id/ib_cart_sub"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/mobile_green"
+                    android:cropToPadding="true"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/ic_akar_icons_minus"
+                    app:tint="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/tv_cart_qty"
+                    android:layout_width="30dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:text="13"
+                    android:textAlignment="center" />
+
+                <ImageButton
+                    android:id="@+id/ib_cart_add"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/mobile_green"
+                    android:cropToPadding="true"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/ic_baseline_add_24"
+                    app:tint="#FFFFFF" />
+
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
