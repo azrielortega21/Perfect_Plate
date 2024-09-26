@@ -61,36 +61,7 @@ public class UserDatabase {
         });
     }
 
-    public void getGoogleUser(String googleId, final CallbackListener listener){
-        this.databaseReference.orderByChild("googleId").equalTo(googleId)
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                    Log.d("SUCCESS", "found user with googleId: " + googleId);
-                    for (DataSnapshot userSnapshot : snapshot.getChildren()){
-                        FirebaseUser firebaseUser = userSnapshot.getValue(FirebaseUser.class);
-                        listener.onSuccess(firebaseUser);
-                    }
-                }
-                else{
-                    Log.d("FAILURE", "user with google id " + googleId + " does not exist");
-                    listener.onFailure();
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-                Log.e("CANCELLED", "failed to get google user " + error);
-            }
-        });
-    }
-
     public void addUser(User user){
-        this.databaseReference.child(user.getUserId()).setValue(user.getFirebaseUser());
-    }
-
-    public void addGoogleUser(User user){
         this.databaseReference.child(user.getUserId()).setValue(user.getFirebaseUser());
     }
 
@@ -146,29 +117,22 @@ public class UserDatabase {
         //User user = new User();
 
 
-        String username = newUser.getUsername().trim();
-        if (!username.isEmpty()){
-            user.setUsername(username);
-        }
-
-
-        String firstName = newUser.getFirstName().trim();
-        if (!firstName.isEmpty()){
-            user.setFirstName(firstName);
-        }
-
-        String lastName = newUser.getLastName().trim();
-        if (!lastName.isEmpty()){
-            user.setLastName(lastName);
-        }
-        else{
-            user.setLastName("");
+        String fullName = newUser.getFullName().trim();
+        if (!fullName.isEmpty()){
+            user.setFullName(fullName);
         }
 
         if(newUser.getEmail() != null) {
             String email = newUser.getEmail().trim();
             if (!email.isEmpty()) {
                 user.setEmail(email);
+            }
+        }
+
+        if(newUser.getAddress() != null){
+            Address address = newUser.getAddress();
+            if(address.isValid()){
+                user.setAddress(address);
             }
         }
 
@@ -180,84 +144,84 @@ public class UserDatabase {
         }
 
         //TODO: set birthday
-        databaseReference.child(user.getUserId()).setValue(user);
+        databaseReference.child(user.getUserId()).setValue(user.getFirebaseUser());
     }
+//
+//    /**
+//     * Adds user recipe under user. Assigns userId as contributorId of recipe and adds recipe Id
+//     * to the user's list of recipes in the database. Adds recipe to the database.
+//     *
+//     * @param book    recipe to be added to the database
+//     * */
+//    public void addUserRecipe(Book book){
+//        User user = DataHelper.user;
+//        book.setContributor(user);
+//
+//        String recipeId = DataHelper.bookDatabase.addBook(book);
+//        book.setId(recipeId);
+//
+//        user.addUserRecipe(book);
+//        DataHelper.addBook(book);
+//        updateUserRecipes(user.getUserId(), user.getUserOrdersList(), user.getUserRecipesCount());
+//    }
+//
+//    /**
+//     * Removes user recipe from user's list and from the recipe db
+//     * */
+//    public void removeUserRecipe(String recipeId){
+//        //remove from recipe db
+//        DataHelper.bookDatabase.deleteRecipe(recipeId);
+//
+//        //remove from user db
+//        User user = DataHelper.user;
+//        user.removeUserRecipe(recipeId);
+//        updateUserRecipes(user.getUserId(), user.getUserOrdersList(), user.getUserRecipesCount());
+//    }
 
-    /**
-     * Adds user recipe under user. Assigns userId as contributorId of recipe and adds recipe Id
-     * to the user's list of recipes in the database. Adds recipe to the database.
-     *
-     * @param recipe    recipe to be added to the database
-     * */
-    public void addUserRecipe(Recipe recipe){
-        User user = DataHelper.user;
-        recipe.setContributor(user);
-
-        String recipeId = DataHelper.recipeDatabase.addRecipe(recipe);
-        recipe.setId(recipeId);
-
-        user.addUserRecipe(recipe);
-        DataHelper.addRecipe(recipe);
-        updateUserRecipes(user.getUserId(), user.getUserRecipesList(), user.getUserRecipesCount());
-    }
-
-    /**
-     * Removes user recipe from user's list and from the recipe db
-     * */
-    public void removeUserRecipe(String recipeId){
-        //remove from recipe db
-        DataHelper.recipeDatabase.deleteRecipe(recipeId);
-
-        //remove from user db
-        User user = DataHelper.user;
-        user.removeUserRecipe(recipeId);
-        updateUserRecipes(user.getUserId(), user.getUserRecipesList(), user.getUserRecipesCount());
-    }
-
-    public void updateUserRecipes(String userId, ArrayList<String> recipeList, int newSize){
-        this.databaseReference.child(userId)
-                .child("userRecipesCount")
-                .setValue(newSize);
-
-        this.databaseReference.child(userId)
-                .child("userRecipesList")
-                .setValue(recipeList);
-    }
+//    public void updateUserBooks(String userId, ArrayList<String> recipeList, int newSize){
+//        this.databaseReference.child(userId)
+//                .child("userBooksCount")
+//                .setValue(newSize);
+//
+//        this.databaseReference.child(userId)
+//                .child("userBooksList")
+//                .setValue(recipeList);
+//    }
 
     /**
      * Adds fave recipe under user. Increase fave count of recipe
      *
-     * @param recipe  recipe of favorite recipe
+     * @param book  recipe of favorite recipe
      * */
-    public void addFaveRecipe(Recipe recipe){
+    public void addFaveBook(Book book){
         User user = DataHelper.user;
-        user.addFaveRecipe(recipe);
-        updateFaveRecipes(user.getUserId(), user.getFaveRecipesList(), user.getFaveRecipesCount());
+        user.addFaveBook(book);
+        updateFaveBooks(user.getUserId(), user.getFaveBooksList(), user.getFaveBooksCount());
 
-        DataHelper.recipeDatabase.updateFaveCount(recipe.getId(), recipe.getFaveCount());
+        DataHelper.bookDatabase.updateFaveCount(book.getId(), book.getFaveCount());
     }
 
     /**
      * Removes fave recipe from user's list
      * */
-    public void removeFaveRecipe(Recipe recipe){
-        String recipeId = recipe.getId();
+    public void removeFaveBook(Book book){
+        String recipeId = book.getId();
 
         User user = DataHelper.user;
-        user.removeFaveRecipe(recipe);
-        updateFaveRecipes(user.getUserId(), user.getFaveRecipesList(), user.getFaveRecipesCount());
+        user.removeFaveBook(book);
+        updateFaveBooks(user.getUserId(), user.getFaveBooksList(), user.getFaveBooksCount());
 
-        DataHelper.recipeDatabase.updateFaveCount(recipeId, recipe.getFaveCount());
+        DataHelper.bookDatabase.updateFaveCount(recipeId, book.getFaveCount());
     }
 
-    public void updateFaveRecipes(String userId, ArrayList<String> recipeList, int newSize){
+    public void updateFaveBooks(String userId, ArrayList<String> bookList, int newSize){
         this.databaseReference.child(userId)
-                .child("faveRecipesCount")
+                .child("faveBooksCount")
                 .setValue(newSize);
 
         this.databaseReference.child(userId)
-                .child("faveRecipesList")
-                .setValue(recipeList);
+                .child("faveBooksList")
+                .setValue(bookList);
     }
 
     

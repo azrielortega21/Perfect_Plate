@@ -1,6 +1,5 @@
 package com.mobdeve.s14.group4;
 
-import android.media.Image;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;

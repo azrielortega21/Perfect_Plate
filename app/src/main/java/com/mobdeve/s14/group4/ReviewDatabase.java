@@ -32,10 +32,10 @@ public class ReviewDatabase {
     public String addReview(Review review){
         String key = "empty";
 
-        Recipe recipe = DataHelper.recipeDatabase.findRecipe(review.getRecipeId());
+        Book book = DataHelper.bookDatabase.findBook(review.getBookId());
 
-        if (recipe != null){
-            recipe.addRating(review.getRating());
+        if (book != null){
+            book.addRating(review.getRating());
 
             key = this.databaseReference.push().getKey();
             review.setId(key);
@@ -101,11 +101,11 @@ public class ReviewDatabase {
         int remove_index = -1;
 
 
-        Recipe recipe = DataHelper.recipeDatabase.findRecipe(review.getRecipeId());
-        Log.d("recipe.getId()", recipe.getId());
+        Book book = DataHelper.bookDatabase.findBook(review.getBookId());
+        Log.d("recipe.getId()", book.getId());
 
-        if (recipe != null) {
-            recipe.removeRating(review.getRating());
+        if (book != null) {
+            book.removeRating(review.getRating());
 
             for (int i = 0; i < DataHelper.allReviews.size(); i++) {
                 if (DataHelper.allReviews.get(i).getId().equals(review.getId())) {

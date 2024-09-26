@@ -1,16 +1,10 @@
 package com.mobdeve.s14.group4;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.provider.ContactsContract;
-
-import java.io.Serializable;
-
 public class Review {
     private String reviewId;
     private String comment;
     private double rating;
-    private String recipeId;
+    private String bookId;
 
     private User contributor;
     private UploadImage image;
@@ -18,37 +12,37 @@ public class Review {
     public Review(){
     }
 
-    public Review(User contributor, double rating, String comment, String recipeId){
+    public Review(User contributor, double rating, String comment, String bookId){
         this.contributor = contributor;
         this.rating = rating;
         this.comment = comment;
-        this.recipeId = recipeId;
+        this.bookId = bookId;
     }
 
-    public Review(User contributor, double rating, String comment, String recipeId, UploadImage image){
+    public Review(User contributor, double rating, String comment, String bookId, UploadImage image){
         this.contributor = contributor;
         this.rating = rating;
         this.comment = comment;
-        this.recipeId = recipeId;
+        this.bookId = bookId;
         this.image = image;
         System.out.println("REVIEWPIC1 " + image.getmImageUrl());
     }
 
-    public Review(String reviewId, String contributorId, double rating, String comment, String recipeId){
+    public Review(String reviewId, String contributorId, double rating, String comment, String bookId){
         this.reviewId = reviewId;
         setContributorId(contributorId);
         this.rating = rating;
         this.comment = comment;
-        this.recipeId = recipeId;
+        this.bookId = bookId;
         this.image = null;
     }
 
-    public Review(String reviewId, String contributorId, double rating, String comment, String recipeId, UploadImage image){
+    public Review(String reviewId, String contributorId, double rating, String comment, String bookId, UploadImage image){
         this.reviewId = reviewId;
         setContributorId(contributorId);
         this.rating = rating;
         this.comment = comment;
-        this.recipeId = recipeId;
+        this.bookId = bookId;
         System.out.println("REVIEWPIC2 " + image.getmImageUrl());
         this.image = image;
     }
@@ -75,8 +69,8 @@ public class Review {
         return this.contributor.getUserId();
     }
 
-    public String getRecipeId(){
-        return this.recipeId;
+    public String getBookId(){
+        return this.bookId;
     }
 
     public String getContributorName() {
@@ -97,7 +91,7 @@ public class Review {
         this.contributor = DataHelper.userDatabase.findUser(id);
     }
 
-    public void setRecipeId(String id){
-        this.recipeId = id;
+    public void setBookId(String id){
+        this.bookId = id;
     }
 }

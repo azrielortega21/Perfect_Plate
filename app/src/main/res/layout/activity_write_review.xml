@@ -59,7 +59,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginRight="30dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="Share how this recipe turned out for you!"
+        android:text="Share how this book turned out for you!"
         android:textAlignment="center"
         android:textColor="#02043F"
         android:textSize="22sp"

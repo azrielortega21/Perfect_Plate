@@ -1,6 +1,5 @@
 package com.mobdeve.s14.group4;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,26 +9,25 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
-import org.w3c.dom.Text;
 
-public class FavoriteRecipeHolder extends RecyclerView.ViewHolder{
-    private Recipe recipe;
+public class FavoriteBookHolder extends RecyclerView.ViewHolder{
+    private Book book;
 
-    public ImageView ivRecipe;
-    private TextView tvRecipe;
+    public ImageView ivBook;
+    private TextView tvBook;
     public ImageView ivHeart;
 
-    private CardView cvRecipe;
+    private CardView cvBook;
 
     private boolean bHeart = true;
 
-    public FavoriteRecipeHolder(@NonNull @NotNull View itemView) {
+    public FavoriteBookHolder(@NonNull @NotNull View itemView) {
         super(itemView);
 
-        ivRecipe = itemView.findViewById(R.id.template_fr_recipe_iv_cover);
-        tvRecipe = itemView.findViewById(R.id.template_fr_recipe_tv_name);
+        ivBook = itemView.findViewById(R.id.template_fr_book_iv_cover);
+        tvBook = itemView.findViewById(R.id.template_fr_book_tv_name);
         ivHeart = itemView.findViewById(R.id.template_fr_iv_heart);
-        cvRecipe = itemView.findViewById(R.id.template_fr_cv_recipe);
+        cvBook = itemView.findViewById(R.id.template_fr_cv_book);
 
         ivHeart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,29 +35,29 @@ public class FavoriteRecipeHolder extends RecyclerView.ViewHolder{
                 if(bHeart == false) {
                     ivHeart.setImageResource(R.drawable.vectorheart_on);
                     bHeart = true;
-                    DataHelper.userDatabase.addFaveRecipe(recipe);
+                    DataHelper.userDatabase.addFaveBook(book);
                 }
                 else{
                     ivHeart.setImageResource(R.drawable.heart_off);
                     bHeart = false;
-                    DataHelper.userDatabase.removeFaveRecipe(recipe);
+                    DataHelper.userDatabase.removeFaveBook(book);
                 }
             }
         });
     }
 
-    public void setRecipe(Recipe recipe){ this.recipe = recipe; }
+    public void setBook(Book book){ this.book = book; }
 
-    public void setRecipePic(int image){
-        ivRecipe.setImageResource(image);
+    public void setBookPic(int image){
+        ivBook.setImageResource(image);
     }
 
-    public void setRecipeName (String name){
-        tvRecipe.setText(name);
+    public void setBookName(String name){
+        tvBook.setText(name);
     }
 
     public CardView getCard (){
-        return cvRecipe;
+        return cvBook;
     }
 
     public boolean getLiked(){

@@ -44,7 +44,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private ImageView ivPic;
 
     private EditText etName;
-    private EditText etUsername;
+//    private EditText etUsername;
     private EditText etEmail;
 
     private FirebaseUser user;
@@ -74,7 +74,7 @@ public class EditProfileActivity extends AppCompatActivity {
         ivPic = findViewById(R.id.editprofile_iv_profile_pic);
 
         etName = findViewById(R.id.editprofile_et_name);
-        etUsername = findViewById(R.id.editprofile_et_username);
+//        etUsername = findViewById(R.id.editprofile_et_username);
         etEmail = findViewById(R.id.editprofile_et_email);
         ivEmail = findViewById(R.id.editprofile_iv_email);
 
@@ -114,51 +114,52 @@ public class EditProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 btnEdit.setEnabled(false);
                 pb.setVisibility(View.VISIBLE);
-                if(TextUtils.isEmpty(etName.getText()) ||
-                        TextUtils.isEmpty(etUsername.getText())){
-
-                    if(TextUtils.isEmpty(etName.getText()))
-                        etName.setError("Name is Required");
-
-
-                    if(TextUtils.isEmpty(etUsername.getText()))
-                        etUsername.setError("Username is Required");
-
-
-                    if(TextUtils.isEmpty(etEmail.getText()))
-                        etEmail.setError("Email is Required");
-
-                    pb.setVisibility(View.GONE);
-                    btnEdit.setEnabled(true);
-                    Toast.makeText(EditProfileActivity.this, "Fill Up All Values", Toast.LENGTH_LONG).show();
-                }
-                else{
-
-                    User newUser = new User();
-
-                    String fname, username, email;
-                    String lname = "";
-                    String [] fullName = etName.getText().toString().trim().split(" ");
-
-                    fname = fullName[0];
-
-                    //combine remaining name to last name
-                    for (int i = 1; i < fullName.length; i++){
-                        lname = lname.concat(fullName[i] + " ");
-                    }
-
-                    if (etEmail.isShown()){
-                        email = etEmail.getText().toString().trim();
-                        newUser.setEmail(email);
-                    }
-                    username = etUsername.getText().toString().trim();
-
-                    newUser.setUsername(username);
-                    newUser.setFirstName(fname);
-                    newUser.setLastName(lname);
-
-                    uploadFile(newUser);
-                }
+//                TODO: validate updated data
+//                if(TextUtils.isEmpty(etName.getText()) ||
+//                        TextUtils.isEmpty(etUsername.getText())){
+//
+//                    if(TextUtils.isEmpty(etName.getText()))
+//                        etName.setError("Name is Required");
+//
+//
+//                    if(TextUtils.isEmpty(etUsername.getText()))
+//                        etUsername.setError("Username is Required");
+//
+//
+//                    if(TextUtils.isEmpty(etEmail.getText()))
+//                        etEmail.setError("Email is Required");
+//
+//                    pb.setVisibility(View.GONE);
+//                    btnEdit.setEnabled(true);
+//                    Toast.makeText(EditProfileActivity.this, "Fill Up All Values", Toast.LENGTH_LONG).show();
+//                }
+//                else{
+//
+//                    User newUser = new User();
+//
+//                    String fname, username, email;
+//                    String lname = "";
+//                    String [] fullName = etName.getText().toString().trim().split(" ");
+//
+//                    fname = fullName[0];
+//
+//                    //combine remaining name to last name
+//                    for (int i = 1; i < fullName.length; i++){
+//                        lname = lname.concat(fullName[i] + " ");
+//                    }
+//
+//                    if (etEmail.isShown()){
+//                        email = etEmail.getText().toString().trim();
+//                        newUser.setEmail(email);
+//                    }
+//                    username = etUsername.getText().toString().trim();
+//
+//                    newUser.setUsername(username);
+//                    newUser.setFirstName(fname);
+//                    newUser.setLastName(lname);
+//
+//                    uploadFile(newUser);
+//                }
             }
         });
 
@@ -231,24 +232,24 @@ public class EditProfileActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener(){
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-                String fname, lname, username, email;
-                fname = dataSnapshot.child("firstName").getValue(String.class);
-                lname = dataSnapshot.child("lastName").getValue(String.class);
-                username = dataSnapshot.child("username").getValue(String.class);
-                email = dataSnapshot.child("email").getValue(String.class);
-
-                if (email == null){
-                    etEmail.setVisibility(View.GONE);
-                    ivEmail.setVisibility(View.GONE);
-                }
-                else{
-                    etEmail.setText(email);
-                }
-
-                String fullName = fname + " " + lname;
-                etName.setText(fullName);
-                etUsername.setText(username);
+//                TODO: add on data change for user
+//                String fname, lname, username, email;
+//                fname = dataSnapshot.child("firstName").getValue(String.class);
+//                lname = dataSnapshot.child("lastName").getValue(String.class);
+//                username = dataSnapshot.child("username").getValue(String.class);
+//                email = dataSnapshot.child("email").getValue(String.class);
+//
+//                if (email == null){
+//                    etEmail.setVisibility(View.GONE);
+//                    ivEmail.setVisibility(View.GONE);
+//                }
+//                else{
+//                    etEmail.setText(email);
+//                }
+//
+//                String fullName = fname + " " + lname;
+//                etName.setText(fullName);
+//                etUsername.setText(username);
             }
 
             @Override

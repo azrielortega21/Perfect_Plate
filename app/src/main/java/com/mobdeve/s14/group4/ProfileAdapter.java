@@ -14,13 +14,13 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class ProfileAdapter extends RecyclerView.Adapter<ProfileRecipeHolder>{
+public class ProfileAdapter extends RecyclerView.Adapter<ProfileBookHolder>{
 
-    public static final String KEY_RECIPE_ID = "KEY_RECIPE_ID";
+    public static final String KEY_BOOK_ID = "KEY_BOOK_ID";
 
-    private ArrayList<Recipe> data;
+    private ArrayList<Book> data;
 
-    public ProfileAdapter(ArrayList<Recipe> tempData){
+    public ProfileAdapter(ArrayList<Book> tempData){
         data = tempData;
     }
 
@@ -28,17 +28,17 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileRecipeHolder>{
     @NonNull
     @NotNull
     @Override
-    public ProfileRecipeHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+    public ProfileBookHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.profile_recipe_template, parent, false);
+        View view = inflater.inflate(R.layout.profile_book_template, parent, false);
 
-        ProfileRecipeHolder holder = new ProfileRecipeHolder(view);
+        ProfileBookHolder holder = new ProfileBookHolder(view);
 
         holder.ivCover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(v.getContext(), RecipeDetailsActivity.class);
-                i.putExtra(KEY_RECIPE_ID, data.get(holder.getBindingAdapterPosition()).getId());
+                Intent i = new Intent(v.getContext(), BookDetailsActivity.class);
+                i.putExtra(KEY_BOOK_ID, data.get(holder.getBindingAdapterPosition()).getId());
                 v.getContext().startActivity(i);
             }
         });
@@ -46,9 +46,9 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileRecipeHolder>{
         holder.ivBtnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DataHelper.userDatabase.removeUserRecipe(data.get(holder.getBindingAdapterPosition()).getId());
-                data = DataHelper.user.getUserRecipes();
-                notifyDataSetChanged();
+//                DataHelper.userDatabase.removeUserRecipe(data.get(holder.getBindingAdapterPosition()).getId());
+//                data = DataHelper.user.getUserRecipes();
+//                notifyDataSetChanged();
             }
         });
 
@@ -56,7 +56,7 @@ public class ProfileAdapter extends RecyclerView.Adapter<ProfileRecipeHolder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull ProfileRecipeHolder holder, int position) {
+    public void onBindViewHolder(@NonNull @NotNull ProfileBookHolder holder, int position) {
         Picasso.with(holder.itemView.getContext())
                 .load(data.get(position).getUploadImage().getmImageUrl())
                 .placeholder(R.drawable.perfect_plate_transparent_bg)

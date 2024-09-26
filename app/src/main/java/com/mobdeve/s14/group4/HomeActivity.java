@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -19,9 +18,9 @@ import java.util.ArrayList;
 public class HomeActivity extends AppCompatActivity {
 
     private RecyclerView rvPopular;
-    private ArrayList<Recipe> popularRecipeList;
+    private ArrayList<Book> popularBookList;
     private RecyclerView rvRecent;
-    private ArrayList<Recipe> recentRecipeList;
+    private ArrayList<Book> recentBookList;
     private ArrayList<Review> reviewList;
 
     private RecyclerView.LayoutManager popularManager;
@@ -49,7 +48,7 @@ public class HomeActivity extends AppCompatActivity {
         this.initComponents(); // init components and load data
 
         this.initPopularRecyclerView();
-        this.initRecentFeed();
+        //this.initRecentFeed();
     }
 
     @Override
@@ -80,7 +79,7 @@ public class HomeActivity extends AppCompatActivity {
         this.llFavorites = findViewById(R.id.ll_fav);
         this.reviewList = DataHelper.allReviews;
 
-        this.etSearch = findViewById(R.id.et_search_recipe);
+        this.etSearch = findViewById(R.id.et_search_book);
 
 //        Log.d("LISTSIZE", String.valueOf(recipeList.size()));
         //initRecipes
@@ -112,8 +111,8 @@ public class HomeActivity extends AppCompatActivity {
         this.llCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(HomeActivity.this, CreateRecipeActivity1.class);
-                startActivity(i);
+//                Intent i = new Intent(HomeActivity.this, CreateRecipeActivity1.class);
+//                startActivity(i);
             }
         });
 
@@ -140,34 +139,34 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void refreshAdapters(){
-        this.recentRecipeList.clear();
-        this.recentRecipeList.addAll(DataHelper.allRecipes);
-        this.recentAdapter.notifyDataSetChanged();
+        //this.recentBookList.clear();
+        //this.recentBookList.addAll(DataHelper.allBooks);
+        //this.recentAdapter.notifyDataSetChanged();
 
-        this.popularRecipeList.clear();
-        this.popularRecipeList.addAll(DataHelper.popularRecipes);
+        this.popularBookList.clear();
+        this.popularBookList.addAll(DataHelper.popularBooks);
         this.popularAdapter.notifyDataSetChanged();
     }
 
     private void initPopularRecyclerView(){
-        this.popularRecipeList = DataHelper.popularRecipes;
+        this.popularBookList = DataHelper.popularBooks;
         this.rvPopular = findViewById(R.id.rv_home_popular);
 
         this.popularManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         this.rvPopular.setLayoutManager(this.popularManager);
 
-        this.popularAdapter = new PopularAdapter(this.popularRecipeList);
+        this.popularAdapter = new PopularAdapter(this.popularBookList);
         this.rvPopular.setAdapter(this.popularAdapter);
     }
 
     private void initRecentFeed(){
-        this.recentRecipeList = DataHelper.allRecipes;
+        this.recentBookList = DataHelper.allBooks;
         this.rvRecent = findViewById(R.id.rv_home_recent);
 
         this.recentManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         this.rvRecent.setLayoutManager(recentManager);
 
-        this.recentAdapter = new RecentAdapter(this.recentRecipeList);
+        this.recentAdapter = new RecentAdapter(this.recentBookList);
         this.rvRecent.setAdapter(recentAdapter);
     }
 }

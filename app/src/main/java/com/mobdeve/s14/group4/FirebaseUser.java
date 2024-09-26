@@ -5,125 +5,37 @@ import java.util.ArrayList;
 public class FirebaseUser {
     private String userId;
 
+    private String fullName;
     private String email;
     private String password;
-    private String username;
-
-    private String firstName;
-    private String lastName;
-
-    private String googleId;
-
-    private String birthday;
-
-    private ArrayList<String> userRecipesList;
-    private ArrayList<String> faveRecipesList;
+    private Address address;
 
     private UploadImage profilePic;
 
+    private ArrayList<String> faveBooksList;
+
 
     public FirebaseUser(){
-        this.userRecipesList = new ArrayList<String>();
-        this.faveRecipesList = new ArrayList<String>();
+        this.faveBooksList = new ArrayList<String>();
         this.profilePic = getProfile_Image();
     }
 
-    public FirebaseUser(String id, String fName, String lName){
-        this.userId = id;
-        this.firstName = fName;
-        this.lastName = lName;
-    }
-
-    public FirebaseUser(String email, String  password, String username, String firstName, String lastName){
+    public FirebaseUser(String fullName, String email, String  password, Address address){
+        this.fullName = fullName;
         this.email = email;
         this.password = password;
-        this.username = username;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.address = address;
 
-        this.userRecipesList = new ArrayList<String>();
-        this.faveRecipesList = new ArrayList<String>();
-    }
-
-    public FirebaseUser(String email, String  password, String username, String firstName, String lastName, String birthday){
-        this.email = email;
-        this.password = password;
-        this.username = username;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.birthday = birthday;
-
-        this.userRecipesList = new ArrayList<String>();
-        this.faveRecipesList = new ArrayList<String>();
-    }
-
-    public FirebaseUser(String googleId, String username, String firstName, String lastName){
-        this.googleId = googleId;
-        this.username = username;
-        this.firstName = firstName;
-        this.lastName = lastName;
-
-        this.userRecipesList = new ArrayList<String>();
-        this.faveRecipesList = new ArrayList<String>();
-    }
-
-//    public FirebaseUser(String email, String  password, String username, String firstName, String lastName, UploadImage image){
-//        this.email = email;
-//        this.password = password;
-//        this.username = username;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//
-//        this.userRecipesList = new ArrayList<String>();
-//        this.faveRecipesList = new ArrayList<String>();
-//        this.profilePic = image;
-//    }
-
-//    public FirebaseUser(String email, String  password, String username, String firstName, String lastName, String birthday, UploadImage image){
-//        this.email = email;
-//        this.password = password;
-//        this.username = username;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.birthday = birthday;
-//
-//        this.userRecipesList = new ArrayList<String>();
-//        this.faveRecipesList = new ArrayList<String>();
-//        this.profilePic = image;
-//    }
-//    public FirebaseUser(String googleId, String username, String firstName, String lastName, UploadImage upload){
-//        this.googleId = googleId;
-//        this.username = username;
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//
-//        this.userRecipesList = new ArrayList<String>();
-//        this.faveRecipesList = new ArrayList<String>();
-//        this.profilePic = upload;
-//    }
-
-    public UploadImage getProfile_Image (){
-        return this.profilePic;
-    }
-
-    public void setProfile_Image (UploadImage p){
-        this.profilePic = p;
-    }
-
-    public String getBirthday(){
-        return this.birthday;
-    }
-
-    public void setBirthday (String b){
-        birthday = b;
+//        this.userOrdersList = new ArrayList<String>();
+        this.faveBooksList = new ArrayList<String>();
     }
 
     public String getUserId(){
         return this.userId;
     }
 
-    public String getUsername(){
-        return this.username;
+    public String getFullName() {
+        return fullName;
     }
 
     public String getEmail(){
@@ -134,40 +46,36 @@ public class FirebaseUser {
         return this.password;
     }
 
-    public String getFirstName(){
-        return this.firstName;
+    public Address getAddress() {
+        return address;
     }
 
-    public String getLastName(){
-        return this.lastName;
+    public UploadImage getProfile_Image (){
+        return this.profilePic;
     }
 
-    public String getGoogleId() {
-        return this.googleId;
+    //    public int getUserRecipesCount(){
+//        return this.userOrdersList.size();
+//    }
+
+//    public ArrayList<String> getUserOrdersList(){
+//        return this.userOrdersList;
+//    }
+
+    public int getFaveBooksCount(){
+        return this.faveBooksList.size();
     }
 
-    public int getUserRecipesCount(){
-        return this.userRecipesList.size();
-    }
-
-    public ArrayList<String> getUserRecipesList(){
-        return this.userRecipesList;
-    }
-
-    public int getFaveRecipesCount(){
-        return this.faveRecipesList.size();
-    }
-
-    public ArrayList<String> getFaveRecipesList(){
-        return this.faveRecipesList;
+    public ArrayList<String> getFaveBooksList(){
+        return this.faveBooksList;
     }
 
     public void setUserId(String userId){
         this.userId = userId;
     }
 
-    public void setUsername(String username){
-        this.username = username;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public void setEmail(String email){
@@ -179,24 +87,20 @@ public class FirebaseUser {
         this.password = password;
     }
 
-    public void setFirstName(String firstName){
-        this.firstName = firstName;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    public void setLastName(String lastName){
-        this.lastName = lastName;
+    public void setProfile_Image (UploadImage p){
+        this.profilePic = p;
     }
 
-    public void setGoogleId(String googleId){
-        this.googleId = googleId;
-    }
+//    public void setUserOrdersList(ArrayList<String> recipeList){
+//        this.userOrdersList = recipeList;
+//    }
 
-    public void setUserRecipesList(ArrayList<String> recipeList){
-        this.userRecipesList = recipeList;
-    }
-
-    public void setFaveRecipesList(ArrayList<String> recipeList){
-        this.faveRecipesList = recipeList;
+    public void setFaveBooksList(ArrayList<String> bookList){
+        this.faveBooksList = bookList;
     }
 
     public FirebaseUser duplicateUser(){
@@ -204,17 +108,13 @@ public class FirebaseUser {
 
         user.setUserId(this.userId);
 
-        user.setUsername(this.username);
+        user.setFullName(this.fullName);
         user.setEmail(this.email);
         user.setPassword(this.password);
+        user.setAddress(this.address);
 
-        user.setFirstName(this.firstName);
-        user.setLastName(this.lastName);
-
-        user.setGoogleId(this.googleId);
-
-        user.setUserRecipesList(this.userRecipesList);
-        user.setFaveRecipesList(this.faveRecipesList);
+//        user.setUserOrdersList(this.userOrdersList);
+        user.setFaveBooksList(this.faveBooksList);
 
         if(this.profilePic != null) {
             user.setProfile_Image(this.profilePic);
@@ -226,37 +126,20 @@ public class FirebaseUser {
         return user;
     }
 
-    public void addUserRecipeId(String id){
-        this.userRecipesList.add(id);
+    public void addFaveBookId(String id){
+        this.faveBooksList.add(id);
     }
 
-    public void addFaveRecipeId(String id){
-        this.faveRecipesList.add(id);
-    }
-
-    public void removeUserRecipeId(String id){
-        int n = getUserRecipesCount();
+    public void removeFaveBookId(String id){
+        int n = getFaveBooksCount();
         int removeIndex = 0;
 
         for (int i = 0; i < n; i++){
-            if (this.userRecipesList.get(i).equals(id)){
+            if (this.faveBooksList.get(i).equals(id)){
                 removeIndex = i;
             }
         }
 
-        this.userRecipesList.remove(removeIndex);
-    }
-
-    public void removeFaveRecipeId(String id){
-        int n = getFaveRecipesCount();
-        int removeIndex = 0;
-
-        for (int i = 0; i < n; i++){
-            if (this.faveRecipesList.get(i).equals(id)){
-                removeIndex = i;
-            }
-        }
-
-        this.faveRecipesList.remove(removeIndex);
+        this.faveBooksList.remove(removeIndex);
     }
 }

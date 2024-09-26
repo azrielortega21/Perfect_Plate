@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +13,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -25,14 +23,13 @@ public class SignUpActivity2 extends AppCompatActivity {
     private Button btnSignUp;
     private String email;
     private String password;
-    private String username;
+    private String fullName;
 
-    private String fname;
-    private String lname;
-    private EditText etFirstN;
-    private EditText etLastN;
-
-    private EditText etBirthday;
+    private EditText etStreetAddress;
+    private EditText etCity;
+    private EditText etState;
+    private EditText etPostalCode;
+    private Address address;
 
     private ProgressBar pbSignup;
     private FirebaseAuth mAuth;
@@ -51,49 +48,35 @@ public class SignUpActivity2 extends AppCompatActivity {
 
         this.btnSignUp = findViewById(R.id.signup2_btn_signup);
 
-        this.etFirstN = findViewById(R.id.signup2_et_fname);
-        this.etLastN = findViewById(R.id.signup2_et_lname);
+        this.etStreetAddress = findViewById(R.id.signup2_et_sAddress);
+        this.etCity = findViewById(R.id.signup2_et_city);
+        this.etState = findViewById(R.id.signup2_et_state);
+        this.etPostalCode = findViewById(R.id.signup2_et_state);
 
         this.pbSignup = findViewById(R.id.pb_signup);
-
-        etBirthday = findViewById(R.id.signup2_et_birthday);
 
         Intent i = getIntent();
 
         email = i.getStringExtra(SignUpActivity1.KEY_EMAIL);
         password = i.getStringExtra(SignUpActivity1.KEY_PASSWORD);
-        username = i.getStringExtra(SignUpActivity1.KEY_USERNAME);
+        fullName = i.getStringExtra(SignUpActivity1.KEY_FULLNAME);
 
         Log.d("TEST EMAIL SIGN UP 2", email);
         Log.d("TEST PASSWORD SIGN UP 2", password);
-        Log.d("TEST USERNAME SIGN UP 2", username);
-
-        etBirthday.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DatePickerDialog datePicker = new DatePickerDialog(SignUpActivity2.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int day) {
-                        month = month + 1;
-                        String date = day +"/" + month + "/" + year;
-                        etBirthday.setText(date);
-                    }
-                }, year, month, day);
-                datePicker.show();
-            }
-        });
+        Log.d("TEST USERNAME SIGN UP 2", fullName);
 
         this.btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String street = etStreetAddress.getText().toString().trim();
+                String city = etCity.getText().toString().trim();
+                String state = etState.getText().toString().trim();
+                String postalCode = etPostalCode.getText().toString().trim();
 
-                fname = etFirstN.getText().toString().trim();
-                lname = etLastN.getText().toString().trim();
-                String birthday = etBirthday.getText().toString().trim();
-
+                address = new Address(street, city, state, postalCode);
                 //Toast.makeText(SignUpActivity2.this, birthday, Toast.LENGTH_SHORT).show();
 
-                User user = new User(email, password, username, fname, lname, birthday);
+                User user = new User(fullName, email, password, address);
                 if (validateUser(user)){
                     //add user to db
 
@@ -107,6 +90,11 @@ public class SignUpActivity2 extends AppCompatActivity {
     private boolean validateUser(User user){
         boolean isValidUser = true;
 
+        //validate name
+        if (user.getFullName().isEmpty()){
+            isValidUser = false;
+        }
+
         //validate email
         if(user.getEmail().isEmpty()){
             isValidUser = false;
@@ -117,22 +105,8 @@ public class SignUpActivity2 extends AppCompatActivity {
             isValidUser = false;
         }
 
-        //validate username
-        if (user.getUsername().isEmpty()){
-            isValidUser = false;
-        }
-
         //validate first name
-        if (user.getFirstName().isEmpty()){
-            isValidUser = false;
-        }
-
-        //validate last name
-        if (user.getLastName().isEmpty()){
-            isValidUser = false;
-        }
-
-        if (user.getBirthday().isEmpty()){
+        if (!user.getAddress().isValid()){
             isValidUser = false;
         }
 
@@ -152,14 +126,12 @@ public class SignUpActivity2 extends AppCompatActivity {
         this.pbSignup.setVisibility(View.VISIBLE);
         Log.d("TEST EMAIL STORE", email);
         Log.d("TEST PASSWORD STORE", password);
-        Log.d("TEST USERNAME STORE", username);
-        Log.d("TEST FNAME STORE", fname);
-        Log.d("TEST LNAME STORE", lname);
+        Log.d("TEST USERNAME STORE", fullName);
 
         Log.d("TEST GETEMAIL STORE", u.getEmail());
         Log.d("TEST GETEMAIL PASSWORD", u.getPassword());
 
-        //register to firebase
+//        register to firebase
         this.mAuth.createUserWithEmailAndPassword(u.getEmail(), u.getPassword())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
