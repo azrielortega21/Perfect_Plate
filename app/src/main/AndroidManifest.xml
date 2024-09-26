@@ -2,10 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mobdeve.s14.group4">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
 
     <application
         android:allowBackup="true"
@@ -14,17 +13,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PerfectPlate">
-        <activity android:name=".SearchFilterActivity"></activity>
-        <activity android:name=".ViewFavoritesActivity" />
-        <activity android:name=".CreateRecipeActivity3" />
-        <activity android:name=".CreateRecipeActivity1" />
-        <activity android:name=".CreateRecipeActivity2" />
-        <activity android:name=".SearchActivity" />
-        <activity android:name=".WriteReviewActivity" />
-        <activity android:name=".EditProfileActivity" />
+        <activity android:name=".AddAdminActivity"></activity>
+        <activity android:name=".AdminAccessActivity" />
+        <activity android:name=".ViewOrderActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".RecipeDetailsActivity" />
-        <activity android:name=".HomeActivity" />
+        <activity android:name=".GCashPaymentActivity" />
+        <activity android:name=".CheckoutDoneActivity" />
+        <activity android:name=".CheckoutActivity" />
+        <activity android:name=".AddToCartActivity" />
+        <activity android:name=".SearchFilterActivity" />
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".BookDetailsActivity" />
         <activity android:name=".SignUpActivity2" />
         <activity android:name=".SignUpActivity1" />
         <activity android:name=".LoginActivity" />
