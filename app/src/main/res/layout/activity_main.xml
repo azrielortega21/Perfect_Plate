@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@color/mobile_green"
     tools:context=".MainActivity">
 
     <ImageView
@@ -38,9 +38,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/montserrat_bold"
         android:text="Welcome to"
-        android:textColor="#FF9400"
+        android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -52,9 +52,9 @@
         android:id="@+id/main_tv_welcome2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
-        android:text="Perfect Plate"
-        android:textColor="#FF9400"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="App Name"
+        android:textColor="#FFFFFF"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,15 +64,15 @@
     <Button
         android:id="@+id/main_btn_join"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginTop="48dp"
-        android:background="@drawable/roundercornersbutton"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/montserrat_bold"
         android:foregroundTint="#FFFFFF"
         android:shadowColor="#7C7979"
-        android:text="JOIN PERFECT PLATE"
-        android:textColor="#FFFFFF"
-        app:backgroundTint="#FF9400"
+        android:text="JOIN APP NAME"
+        android:textColor="@color/mobile_green"
+        app:backgroundTint="#fff"
+        app:cornerRadius="15dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
@@ -81,20 +81,22 @@
     <Button
         android:id="@+id/main_btn_login"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginTop="24dp"
-        android:background="@drawable/roundercornersbutton"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/montserrat_bold"
         android:foregroundTint="#FFFFFF"
         android:shadowColor="#7C7979"
         android:text="I'M ALREADY A MEMBER"
-        android:textColor="#FF9400"
+        android:textColor="#fff"
         android:textSize="13sp"
-        app:backgroundTint="#FFFFFF"
+        app:backgroundTint="@color/mobile_green"
+        app:cornerRadius="15dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline5"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline4"
-        app:layout_constraintTop_toBottomOf="@+id/main_btn_join" />
+        app:layout_constraintTop_toBottomOf="@+id/main_btn_join"
+        app:strokeColor="#fff"
+        app:strokeWidth="5px" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -109,17 +111,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.80" />
-
-    <ImageView
-        android:id="@+id/main_iv_plate"
-        android:layout_width="351dp"
-        android:layout_height="321dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline6"
-        app:layout_constraintStart_toStartOf="@+id/guideline7"
-        app:layout_constraintTop_toTopOf="@+id/guideline8"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/perfect_plate___plate_big" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline6"

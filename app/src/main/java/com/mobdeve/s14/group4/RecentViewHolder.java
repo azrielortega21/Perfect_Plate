@@ -14,9 +14,8 @@ public class RecentViewHolder extends RecyclerView.ViewHolder  {
     public ImageView ivRecentPic;
     private TextView tvRecentName;
     private TextView tvRecentAuthor;
-    private TextView tvRecentRatings;
-    private TextView tvRecentReviews;
-    private TextView tvRecentHearts;
+    private TextView tvRecentCategory;
+    private TextView tvRecentPrice;
 
     public RecentViewHolder(@NonNull @NotNull View itemView) {
         super(itemView);
@@ -25,9 +24,12 @@ public class RecentViewHolder extends RecyclerView.ViewHolder  {
         this.ivRecentPic.setClipToOutline(true);
         this.tvRecentName = itemView.findViewById(R.id.tv_recent_name);
         this.tvRecentAuthor = itemView.findViewById(R.id.tv_recent_author);
-        this.tvRecentRatings = itemView.findViewById(R.id.tv_recent_ratings);
-        this.tvRecentReviews = itemView.findViewById(R.id.tv_recent_reviews);
-        this.tvRecentHearts = itemView.findViewById(R.id.tv_recent_hearts);
+        this.tvRecentPrice = itemView.findViewById(R.id.tv_recent_price);
+        this.tvRecentCategory = itemView.findViewById(R.id.tv_recent_category);
+    }
+
+    public ImageView getRecentCard(){
+        return this.ivRecentPic;
     }
 
     public void setIvRecentPic(int p){
@@ -42,19 +44,11 @@ public class RecentViewHolder extends RecyclerView.ViewHolder  {
         this.tvRecentAuthor.setText(n);
     }
 
-    public void setTvRecentRatings(String r){
-        this.tvRecentRatings.setText(r);
+    public void setTvRecentCategory(String c) {
+        this.tvRecentCategory.setText(c);
     }
 
-    public void setTvRecentReviews(int r){
-        this.tvRecentReviews.setText(String.valueOf(r));
-    }
-
-    public void setTvRecentHearts(int h){
-        this.tvRecentHearts.setText(String.valueOf(h));
-    }
-
-    public ImageView getRecentCard(){
-        return this.ivRecentPic;
+    public void setTvRecentPrice(double price) {
+        this.tvRecentPrice.setText(String.format("%.2f", price));
     }
 }

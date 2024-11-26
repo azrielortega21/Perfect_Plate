@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF9400"
+    android:background="@color/mobile_green"
     tools:context=".SignUpActivity1">
 
     <TextView
@@ -36,38 +36,39 @@
         android:layout_height="40dp"
         android:layout_marginTop="48dp"
         android:background="@drawable/roundercornersbutton"
-        android:fontFamily="@font/montserrat"
+        android:drawableRight="@drawable/ic_baseline_arrow_next"
+        android:fontFamily="@font/montserrat_bold"
         android:foregroundTint="#FFFFFF"
         android:shadowColor="#7C7979"
         android:text="Next"
+        android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="13sp"
-        app:backgroundTint="#FF9400"
+        app:backgroundTint="@color/mobile_green"
         app:layout_constraintEnd_toStartOf="@+id/guideline20"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline21"
-        app:layout_constraintTop_toTopOf="@+id/guideline17"
-        android:drawableRight="@drawable/ic_baseline_arrow_next" />
+        app:layout_constraintTop_toTopOf="@+id/guideline17" />
 
     <ImageView
         android:id="@+id/signup1_iv_email"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="35dp"
         app:layout_constraintStart_toStartOf="@+id/guideline11"
         app:layout_constraintTop_toBottomOf="@+id/signup1_iv_password"
-        app:srcCompat="@drawable/lock" />
+        app:srcCompat="@drawable/ic_vector__7_" />
 
     <ImageView
         android:id="@+id/signup1_iv_password"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="35dp"
         app:layout_constraintStart_toStartOf="@+id/guideline11"
         app:layout_constraintTop_toBottomOf="@+id/signup1_iv_username"
-        app:srcCompat="@drawable/perfectplate_email" />
+        app:srcCompat="@drawable/ic_email" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline11"
@@ -98,15 +99,14 @@
         app:layout_constraintGuide_percent="0.13" />
 
     <EditText
-        android:id="@+id/signup1_et_username"
+        android:id="@+id/signup1_et_fullName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#FF9400"
+        android:backgroundTint="@color/mobile_green"
         android:ems="10"
         android:fontFamily="@font/montserrat"
-        android:hint="Username"
+        android:hint="Full Name"
         android:inputType="textPersonName"
         android:textColor="#02043F"
         android:textColorHint="#9E9E9E"
@@ -120,10 +120,10 @@
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="@+id/guideline11"
         app:layout_constraintTop_toTopOf="@+id/guideline16"
-        app:srcCompat="@drawable/person" />
+        app:srcCompat="@drawable/ic_user_alt" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline16"
@@ -165,8 +165,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="35dp"
-        android:backgroundTint="#FF9400"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/mobile_green"
         android:ems="10"
         android:fontFamily="@font/montserrat"
         android:hint="Email"
@@ -175,15 +175,15 @@
         android:textColorHint="#9E9E9E"
         app:layout_constraintEnd_toStartOf="@+id/guideline18"
         app:layout_constraintStart_toEndOf="@+id/signup1_iv_email"
-        app:layout_constraintTop_toBottomOf="@+id/signup1_et_username" />
+        app:layout_constraintTop_toBottomOf="@+id/signup1_et_fullName" />
 
     <EditText
         android:id="@+id/signup1_et_password"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="44dp"
-        android:backgroundTint="#FF9400"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/mobile_green"
         android:ems="10"
         android:fontFamily="@font/montserrat"
         android:hint="Password"
@@ -194,6 +194,23 @@
         app:layout_constraintStart_toEndOf="@+id/signup1_iv_password"
         app:layout_constraintTop_toBottomOf="@+id/signup1_et_email" />
 
+    <EditText
+        android:id="@+id/signup1_et_confirm_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/mobile_green"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:textColor="#02043F"
+        android:textColorHint="#9E9E9E"
+        app:layout_constraintEnd_toStartOf="@+id/guideline18"
+        app:layout_constraintStart_toEndOf="@+id/signup1_iv_password"
+        app:layout_constraintTop_toBottomOf="@+id/signup1_et_password" />
+
     <TextView
         android:id="@+id/signup1_tv_signin"
         android:layout_width="wrap_content"
@@ -201,7 +218,7 @@
         android:layout_marginTop="36dp"
         android:fontFamily="@font/montserrat"
         android:text="Already have an account?"
-        android:textColor="#FF9400"
+        android:textColor="@color/mobile_green"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
@@ -212,7 +229,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
+        android:fontFamily="@font/montserrat_bold"
         android:text="Sign Up"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
